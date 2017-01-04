@@ -1,0 +1,14 @@
+body{
+	padding-top: 50px;
+}
+.carousel img{
+	width: 100%;
+}
+.carousel-caption p{
+	text-shadow: none;
+	color:;
+}
+@media screen and (max-width: 900px) {
+	.carousel-caption h3{display: none;}
+	.carousel-caption p{display: none;}
+}
