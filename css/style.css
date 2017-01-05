@@ -1,14 +1,13 @@
-body{
-	padding-top: 50px;
-}
-.carousel img{
-	width: 100%;
-}
-.carousel-caption p{
-	text-shadow: none;
-	color:;
-}
+body{padding-top: 50px;}
+.carousel{margin-bottom: 60px;}
+.carousel img{width: 100%;}
+.carousel-caption p{text-shadow: none;}
 @media screen and (max-width: 900px) {
-	.carousel-caption h3{display: none;}
 	.carousel-caption p{display: none;}
 }
+#index-panel{text-align: center;}
+.feature{padding: 30px 0;}
+.feature-heading{font-size: 40px;color: #2a6496;}
+.index-footer{padding: 30px 0;}
+
+
