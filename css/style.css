@@ -8,6 +8,12 @@ body{padding-top: 50px;}
 #index-panel{text-align: center;}
 .feature{padding: 30px 0;}
 .feature-heading{font-size: 40px;color: #2a6496;}
-.index-footer{padding: 30px 0;}
+.footer{padding: 15px 0;background-color: #222;border: 1px solid #080808;}
+.footer p{color: #fff;}
 
+.user-container{width: 800px;margin: 0 auto;}
+.prompt-info{padding-top: 7px;}
+.error{color: #dd1b1b;}
+.correct{color: #24870d;}
+.section-advertising{margin: 50px 0;}
 

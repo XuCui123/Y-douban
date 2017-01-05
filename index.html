@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
   <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>首页</title>
@@ -9,184 +9,201 @@
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-	<nav class="navbar navbar-inverse navbar-fixed-top" rol="navigation">
-	  <div class="container">
-	  	<div class="navbar-header">
-	  	  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-	  	  	<span class="sr-only">Toggle navigation</span>
-        	<span class="icon-bar"></span>
-        	<span class="icon-bar"></span>
-        	<span class="icon-bar"></span>
-        	<span class="icon-bar"></span>
-	  	  </button>
-	  	  <a class="navbar-brand" href="#">YGames</a>
-	  	</div><!-- navbar-header end! -->
-	  	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-		  	<ul class="nav navbar-nav">
-		  		<li><a href="#">主页</a></li>
-		  		<li><a href="#">用户</a></li>
-		  		<li><a href="#">联系</a></li>
-		  		<li><a href="#">论坛</a></li>
-		  		<li class="dropdown">
-		  		  <a href="#" class="dropdown-toggle" data-toggle="dropdown">游戏<span class="caret"></span></a>
-		  		  <ul class="dropdown-menu" role="menu">
-		  		  	<li><a href="#">单机游戏</a></li>
-		  		  	<li><a href="#">网络游戏</a></li>
-		  		  	<li><a href="#">手机游戏</a></li>
-		  		  	<li><a href="#">小游戏系列</a></li>
-		  		  </ul>
-		  		</li>
-		  		<li><a href="#">关于</a></li>
-		  	</ul><!-- nav nav-bar -->
-	  	</div><!-- collapse navbar-collapse end! -->
-	  </div><!-- container end! -->
-	</nav>
-	<!-- Carousel -->
-	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-	  <!-- Indicators -->
-	  <ol class="carousel-indicators">
-	  	<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-	  	<li data-target="#carousel-example-generic" data-slide-to="1"></li>
-	  	<li data-target="#carousel-example-generic" data-slide-to="2"></li>
-	  	<li data-target="#carousel-example-generic" data-slide-to="3"></li>
-	  	<li data-target="#carousel-example-generic" data-slide-to="4"></li>
-	  </ol>
-	  <!-- Wrapper for slides -->
-	  <div class="carousel-inner" role="listbox">
-	  	<div class="item active">
-	  	  <img src="img/index-carousel-1.jpg" alt="carousel-1">
-	  	  <div class="carousel-caption">
-	  	  	<p><a href="http://pal5.baiyou100.com/pal/index.html" class="btn btn-info">相关资讯</a></p>
+    <header>
+	  <nav class="navbar navbar-inverse navbar-fixed-top" rol="navigation">
+	    <div class="container">
+	  	  <div class="navbar-header">
+	        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+	  	      <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+	  	    </button>
+	  	    <a class="navbar-brand" href="#">YGames</a>
+	  	  </div><!-- navbar-header end! -->
+	  	  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		    <ul class="nav navbar-nav">
+		      <li><a href="#">主页</a></li>
+		  	  <li><a href="#">用户</a></li>
+		  	  <li><a href="#">联系</a></li>
+		  	  <li><a href="#">论坛</a></li>
+		  	  <li class="dropdown">
+		  	    <a href="#" class="dropdown-toggle" data-toggle="dropdown">游戏<span class="caret"></span></a>
+		  	    <ul class="dropdown-menu" role="menu">
+		  	      <li><a href="#">单机游戏</a></li>
+		  	      <li><a href="#">网络游戏</a></li>
+		  	      <li><a href="#">手机游戏</a></li>
+		  	      <li><a href="#">小游戏系列</a></li>
+		  	    </ul>
+		  	  </li>
+		  	  <li><a href="#">关于</a></li>
+		    </ul><!-- nav nav-bar -->
+	  	  </div><!-- collapse navbar-collapse end! -->
+	    </div><!-- container end! -->
+	  </nav>
+    </header>
+    <!-- 轮播图 -->
+    <section>
+	  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+	    <!-- Indicators -->
+	    <ol class="carousel-indicators">
+	  	  <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+	  	  <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+	  	  <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+	  	  <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+	  	  <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+	    </ol>
+	    <!-- Wrapper for slides -->
+	    <div class="carousel-inner" role="listbox">
+	  	  <div class="item active">
+	  	    <img src="img/index-carousel-1.jpg" alt="carousel-1">
+	  	    <div class="carousel-caption">
+	  	  	  <p><a href="http://pal5.baiyou100.com/pal/index.html" class="btn btn-info">相关资讯</a></p>
+	  	    </div>
 	  	  </div>
-	  	</div>
-	  	<div class="item">
-	  	  <img src="img/index-carousel-2.jpg" alt="carousel-2">
-	  	  <div class="carousel-caption">
-	  	  	<p><a href="http://mxd.sdo.com/web5/index/index.html" class="btn btn-info">相关资讯</a></p>
+	  	  <div class="item">
+	  	    <img src="img/index-carousel-2.jpg" alt="carousel-2">
+	  	    <div class="carousel-caption">
+	  	  	  <p><a href="http://mxd.sdo.com/web5/index/index.html" class="btn btn-info">相关资讯</a></p>
+	  	    </div>
 	  	  </div>
-	  	</div>
-	  	<div class="item">
-	  	  <img src="img/index-carousel-3.jpg" alt="carousel-3">
-	  	  <div class="carousel-caption">
-	  	  	<p><a href="http://lol.qq.com/" class="btn btn-info">相关资讯</a></p>
+	  	  <div class="item">
+	  	    <img src="img/index-carousel-3.jpg" alt="carousel-3">
+	  	    <div class="carousel-caption">
+	  	  	  <p><a href="http://lol.qq.com/" class="btn btn-info">相关资讯</a></p>
+	  	    </div>
 	  	  </div>
-	  	</div>
-	  	<div class="item">
-	  	  <img src="img/index-carousel-4.jpg" alt="carousel-4">
-	  	  <div class="carousel-caption">
-	  	  	<p><a href="http://wow.blizzard.cn/" class="btn btn-info">相关资讯</a></p>
+	  	  <div class="item">
+	  	    <img src="img/index-carousel-4.jpg" alt="carousel-4">
+	  	    <div class="carousel-caption">
+	  	  	  <p><a href="http://wow.blizzard.cn/" class="btn btn-info">相关资讯</a></p>
+	  	    </div>
 	  	  </div>
-	  	</div>
-	  	<div class="item">
-	  	  <img src="img/index-carousel-5.jpg" alt="carousel-5">
-	  	  <div class="carousel-caption">
-	  	  	<p><a href="http://ku.gamersky.com/2006/Dead-Rising/" class="btn btn-info">相关资讯</a></p>
-	  	  </div>
-	  	</div>		
-	  </div><!-- carousel-inner end! -->
-	  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-	  	<span class="glyphicon glyphicon-chevron-left"></span>
-	  	<span class="sr-only">上一页</span>
-	  </a>
-	  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-	  	<span class="glyphicon glyphicon-chevron-right"></span>
-	  	<span class="sr-only">下一页</span>
-      </a>
-	</div><!-- carousel-example-generic end! -->
+	  	  <div class="item">
+	  	    <img src="img/index-carousel-5.jpg" alt="carousel-5">
+	  	    <div class="carousel-caption">
+	  	  	  <p><a href="http://ku.gamersky.com/2006/Dead-Rising/" class="btn btn-info">相关资讯</a></p>
+	  	    </div>
+	  	  </div>		
+	    </div><!-- carousel-inner end! -->
 
-	<div class="container" id="index-panel">
+	    <!-- prev next button begin-->
+	    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+	  	  <span class="glyphicon glyphicon-chevron-left"></span>
+	  	  <span class="sr-only">上一页</span>
+	    </a>
+	    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+	  	  <span class="glyphicon glyphicon-chevron-right"></span>
+	  	  <span class="sr-only">下一页</span>
+        </a>
+	  </div><!-- carousel-example-generic end! -->
+    </section>
+
+    <!-- 三列展示块 -->
+    <section>
+	  <div class="container" id="index-panel">
 		<div class="row">
-			<div class="col-md-4">
-			  <img src="img/index-panel-1.jpg" alt="panel-1">
-			  <h3>仙剑奇侠传五</h3>
-			  <p>《仙剑奇侠传五》是由大宇资讯旗下软星科技（北京）有限公司所制作的一款国产单机中文角色扮演电脑游戏。</p>
-			  <p><a href="" class="btn btn-primary">相关资讯</a></p>
-			</div>
-			<div class="col-md-4">
-			  <img src="img/index-panel-2.jpg" alt="panel-2">
-			  <h3>英雄联盟</h3>
-			  <p>《英雄联盟》是由美国拳头游戏(Riot Games)开发、中国大陆地区腾讯游戏代理运营的英雄对战MOBA竞技网游。</p>
-			  <p><a href="" class="btn btn-primary">相关资讯</a></p>
-			</div>
-			<div class="col-md-4">
-			  <img src="img/index-panel-3.jpg" alt="panel-3">
-			  <h3>饥荒</h3>
-			  <p>《饥荒》是由Klei Entertainment开发的一款动作冒险类求生游戏。</p>
-			  <p><a href="" class="btn btn-primary">相关资讯</a></p>
-			</div>
+		  <div class="col-md-4">
+			<img src="img/index-panel-1.jpg" alt="panel-1">
+			<h3>仙剑奇侠传五</h3>
+			<p>《仙剑奇侠传五》是由大宇资讯旗下软星科技（北京）有限公司所制作的一款国产单机中文角色扮演电脑游戏。</p>
+			<p><a href="" class="btn btn-primary">相关资讯</a></p>
+	      </div>
+	      <div class="col-md-4">
+			<img src="img/index-panel-2.jpg" alt="panel-2">
+			<h3>英雄联盟</h3>
+			<p>《英雄联盟》是由美国拳头游戏(Riot Games)开发、中国大陆地区腾讯游戏代理运营的英雄对战MOBA竞技网游。</p>
+			<p><a href="" class="btn btn-primary">相关资讯</a></p>
+	      </div>
+	      <div class="col-md-4">
+			<img src="img/index-panel-3.jpg" alt="panel-3">
+			<h3>饥荒</h3>
+			<p>《饥荒》是由Klei Entertainment开发的一款动作冒险类求生游戏。</p>
+			<p><a href="" class="btn btn-primary">相关资讯</a></p>
+	      </div>
 		</div><!-- row end! -->
 		<hr class="divider">
-	</div><!-- container #index-panel end! -->
+	  </div><!-- container #index-panel end! -->
+    </section>
 
-    <!-- nav-tabs -->
-    <div class="container">
-      <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="active"><a href="#recommend-1" role="tab" data-toggle="tab">今日推荐一</a></li>
-        <li role="presentation"><a href="#recommend-2" role="tab" data-toggle="tab">今日推荐二</a></li>
-        <li role="presentation"><a href="#recommend-3" role="tab" data-toggle="tab">今日推荐三</a></li>
-        <li role="presentation"><a href="#recommend-4" role="tab" data-toggle="tab">今日推荐四</a></li>
-      </ul>
-      <!-- tab panes -->
-      <div class="tab-content">
-        <div role="tabpanel" class="tab-pane active" id="recommend-1">
-          <div class="row feature">
-            <div class="col-md-6">
-          	  <h3 class="feature-heading">阴阳师</h3>
-          	  <p class="lead">今天小编为大家推荐的是最近火出一片天的手机游戏阴阳师。《阴阳师》是由中国网易移动游戏公司自主研发的3D日式和风回合制RPG手游。游戏中的和风元素是以《源氏物语》的古日本平安时代为背景设计的。游戏剧情以日本平安时代为背景，讲述了阴阳师安倍晴明于人鬼交织的阴阳两界中，探寻自身记忆的故事。</p>
+    <!-- 标签页切换效果 -->
+    <section>
+      <div class="container">
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active"><a href="#recommend-1" role="tab" data-toggle="tab">今日推荐一</a></li>
+          <li role="presentation"><a href="#recommend-2" role="tab" data-toggle="tab">今日推荐二</a></li>
+          <li role="presentation"><a href="#recommend-3" role="tab" data-toggle="tab">今日推荐三</a></li>
+          <li role="presentation"><a href="#recommend-4" role="tab" data-toggle="tab">今日推荐四</a></li>
+        </ul><!-- nav nav-tabs end! -->
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="recommend-1">
+            <div class="row feature">
+              <div class="col-md-6">
+          	    <h3 class="feature-heading">阴阳师</h3>
+          	    <p class="lead">今天小编为大家推荐的是最近火出一片天的手机游戏阴阳师。《阴阳师》是由中国网易移动游戏公司自主研发的3D日式和风回合制RPG手游。游戏中的和风元素是以《源氏物语》的古日本平安时代为背景设计的。游戏剧情以日本平安时代为背景，讲述了阴阳师安倍晴明于人鬼交织的阴阳两界中，探寻自身记忆的故事。</p>
+              </div>
+              <div class="col-md-6">
+          	    <img class="feature-image img-responsive" src="img/tab-content-1.jpg" alt="tab-content-1">
+              </div>
             </div>
-            <div class="col-md-6">
-          	  <img class="feature-image img-responsive" src="img/tab-content-1.jpg" alt="tab-content-1">
+          </div><!-- tabpanel end! -->
+          <div role="tabpanel" class="tab-pane" id="recommend-2">
+            <div class="row feature">
+              <div class="col-md-6">
+          	    <img class="feature-image img-responsive" src="img/tab-content-2.jpg" alt="tab-content-2">
+              </div>
+              <div class="col-md-6">
+          	    <h3 class="feature-heading">龙之谷</h3>
+          	    <p class="lead">第二款为大家推荐的是曾经也是风靡全球的人气网游龙之谷，虽然它现在已经不被大家熟悉，依然凭借着炫酷的画面吸引着不少网民。《龙之谷手游》是一款原汁原味还原经典端游IP的3D动作冒险手游。该款手游拥有Q萌绚丽的视觉体验，高度还原了端游的世界观、剧情、人设等。故事背景发生在具备奇幻特色的阿特利亚大陆。 游戏以九条龙争霸的幻想世界为背景，主要内容为打退九条龙或为了成为另一传说中的龙而进行的冒险。</p>
+              </div>
             </div>
-          </div><!-- row feature end! -->
-        </div><!-- tab-pane end! -->
-        <div role="tabpanel" class="tab-pane" id="recommend-2">
-          <div class="row feature">
-            <div class="col-md-6">
-          	  <img class="feature-image img-responsive" src="img/tab-content-2.jpg" alt="tab-content-2">
+          </div><!-- tabpanel end! -->
+          <div role="tabpanel" class="tab-pane" id="recommend-3">
+            <div class="row feature">
+              <div class="col-md-6">
+          	    <h3 class="feature-heading">王者荣耀</h3>
+          	    <p class="lead">第三款依然为大家推荐一款火爆手游王者荣耀。游戏是类dota手游，游戏中的玩法以竞技对战为主，玩家之间进行1V1、3V3、5V5等多种方式的PVP对战，还可以参加游戏的冒险模式，进行PVE的闯关模式，在满足条件后可以参加游戏的年度排位赛等。</p>
+              </div>
+              <div class="col-md-6">
+          	    <img class="feature-image img-responsive" src="img/tab-content-3.jpg" alt="tab-content-3">
+              </div>
             </div>
-            <div class="col-md-6">
-          	  <h3 class="feature-heading">龙之谷</h3>
-          	  <p class="lead">第二款为大家推荐的是曾经也是风靡全球的人气网游龙之谷，虽然它现在已经不被大家熟悉，依然凭借着炫酷的画面吸引着不少网民。《龙之谷手游》是一款原汁原味还原经典端游IP的3D动作冒险手游。该款手游拥有Q萌绚丽的视觉体验，高度还原了端游的世界观、剧情、人设等。故事背景发生在具备奇幻特色的阿特利亚大陆。 游戏以九条龙争霸的幻想世界为背景，主要内容为打退九条龙或为了成为另一传说中的龙而进行的冒险。</p>
+          </div><!-- tabpanel end! -->
+          <div role="tabpanel" class="tab-pane" id="recommend-4">
+            <div class="row feature">
+              <div class="col-md-6">
+          	    <img class="feature-image img-responsive" src="img/tab-content-4.jpg" alt="tab-content-4">
+              </div>
+              <div class="col-md-6">
+          	    <h3 class="feature-heading">我的世界</h3>
+          	    <p class="lead">最后为大家推荐一款百玩不腻的单机游戏我的世界。《Minecraft》是由Mojang AB和4J Studios开发的高自由度的沙盒游戏。本作以让每一个玩家在三维空间中自由地创造和破坏不同种类的方块为主体。玩家在游戏中可以在单人或多人模式中通过摧毁或创造方块以创造精妙绝伦的建筑物和艺术，或者收集物品探索地图以完成游戏的主线。</p>
+              </div>
             </div>
-          </div><!-- row feature end! -->
-        </div><!-- tab-pane end! -->
-        <div role="tabpanel" class="tab-pane" id="recommend-3">
-          <div class="row feature">
-            <div class="col-md-6">
-          	  <h3 class="feature-heading">王者荣耀</h3>
-          	  <p class="lead">第三款依然为大家推荐一款火爆手游王者荣耀。游戏是类dota手游，游戏中的玩法以竞技对战为主，玩家之间进行1V1、3V3、5V5等多种方式的PVP对战，还可以参加游戏的冒险模式，进行PVE的闯关模式，在满足条件后可以参加游戏的年度排位赛等。</p>
-            </div>
-            <div class="col-md-6">
-          	  <img class="feature-image img-responsive" src="img/tab-content-3.jpg" alt="tab-content-3">
-            </div>
-          </div><!-- row feature end! -->
-        </div><!-- tab-pane end! -->
-        <div role="tabpanel" class="tab-pane" id="recommend-4">
-          <div class="row feature">
-            <div class="col-md-6">
-          	  <img class="feature-image img-responsive" src="img/tab-content-4.jpg" alt="tab-content-4">
-            </div>
-            <div class="col-md-6">
-          	  <h3 class="feature-heading">我的世界</h3>
-          	  <p class="lead">最后为大家推荐一款百玩不腻的单机游戏我的世界。《Minecraft》是由Mojang AB和4J Studios开发的高自由度的沙盒游戏。本作以让每一个玩家在三维空间中自由地创造和破坏不同种类的方块为主体。玩家在游戏中可以在单人或多人模式中通过摧毁或创造方块以创造精妙绝伦的建筑物和艺术，或者收集物品探索地图以完成游戏的主线。</p>
-            </div>
-          </div><!-- row feature end! -->
-        </div><!-- tab-pane end! -->
-      </div><!-- tab-content end! -->
-	</div><!-- container nav-tabs end! -->
+          </div><!-- tabpanel end! -->
+        </div><!-- tab-content end! -->
+	  </div><!-- container end! -->
+    </section>
 
-	<div class="container">
-	  <footer class="index-footer">
-	    <p class="pull-right"><a href="#top">回到顶部</a></p>
-	    <p>&copy;&nbsp;2017&nbsp&nbsp;岁暮少年玻璃心</p>
-	    <p>
-	      <a href="https://github.com/yudaren007007">GitHub</a>
-	      <a href="http://weibo.com/yujunren0720">新浪微博</a>
-	    </p>
-	  </footer>
-	</div>
-
-
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-2">
+            <img src="img/yudaren-logo.png" alt="yudaren-logo">
+          </div>
+          <div class="col-md-8">
+          	<p>&copy;&nbsp;2017&nbsp&nbsp;岁暮少年玻璃心</p>
+          	<p>
+            	<a href="https://github.com/yudaren007007">GitHub</a>
+            	<a href="http://weibo.com/yujunren0720">新浪微博</a>
+          	</p>
+          </div>
+          <div class="col-md-2">
+            <p><a href="#top">回到顶部</a></p>
+          </div>
+        </div><!-- row end! -->
+      </div><!-- container end! -->
+    </footer>
 
     <script src="js/jquery-3.1.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
