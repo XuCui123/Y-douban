@@ -17,3 +17,22 @@ body{padding-top: 50px;}
 .correct{color: #24870d;}
 .section-advertising{margin: 50px 0;}
 
+.about{padding: 20px 0;}
+.about-content{border-radius: 4px;}
+.about-padding{padding: 10px 40px 50px;background-color: #fff;}
+.about-content h1{font-size: 16px;line-height: 49px;color: #363d40;border-bottom: 1px solid #eceff0;}
+.us-list{padding-left: 20px;}
+.us-list dt{color: #303538;font-size: 14px;font-weight: normal;}
+.us-list dd{margin-bottom: 28px;font-size: 12px;color: #60686b;}
+.group-hd{margin-bottom: 10px;}
+.group-bd ol{list-style: none;padding: 0;margin: 0;}
+.group-bd ol li{margin-top: 10px;}
+.group-bd ol li:nth-child(1) .group-text-box{background-color: #1e2f41;margin-right: 10px;}
+.group-bd ol li:nth-child(2) .group-text-box{background-color: #c81414;margin-left: 10px;}
+.group-bd ol li:nth-child(3) .group-text-box{background-color: #00a028;margin-right: 10px;}
+.group-text-box{width: 290px;height: 300px;}
+.about-contact p{padding: 0 20px 32px;margin: 0;font-size: 12px;line-height: 30px;border-bottom: 1px solid #eceff0;}
+.about-contact h2{font-size: 14px;padding: 0 20px;color: #1f2426;}
+.about-contact h1{border-bottom: none;}
+.about-height{height: 600px;}
+.about-height dd{float: left;width: 335px;margin: 10px 0;}
