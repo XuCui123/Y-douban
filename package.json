@@ -1,0 +1,29 @@
+{
+  "name": "y-games",
+  "version": "1.0.0",
+  "description": "I'm so cool",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yudaren007007/YGames.git"
+  },
+  "author": "yudaren007007",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yudaren007007/YGames/issues"
+  },
+  "homepage": "https://github.com/yudaren007007/YGames#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.0",
+    "body-parser": "^1.15.2",
+    "config-lite": "^1.5.0",
+    "connect-mongo": "^1.3.2",
+    "connect-multiparty": "^2.0.0",
+    "express-session": "^1.14.2",
+    "mongoose": "^4.7.6",
+    "pug": "^2.0.0-beta6"
+  }
+}

@@ -1,0 +1,47 @@
+header
+  nav.navbar.navbar-inverse.navbar-fixed-top(rol="navigation")
+    .container
+      .navbar-header
+        button.navbar-toggle(type="button", data-toggle="collapse", data-target="#bs-example-navbar-collapse-1")
+          span.sr-only Toggle navigation
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        a.navbar-brand(href="#") YGames
+      .collapse.navbar-collapse#bs-example-navbar-collapse-1
+        ul.nav.navbar-nav
+          li
+            a(href="#") 主页
+          li.dropdown
+            a.dropdown-toggle(data-toggle="dropdown") 分类
+              span.caret
+            ul.dropdown-menu(role="menu")
+              li
+                a(herf="#") 单机游戏
+              li
+                a(herf="#") 网络游戏
+              li
+                a(herf="#") 手机游戏
+              li
+                a(herf="#") 小游戏系列
+          li
+            a(href="#") 论坛
+          li
+            a(href="#") 关于
+        ul.nav.navbar-nav.navbar-right
+          if user
+            li 欢迎您,
+              a(href="#") #{user.name}
+            li
+              a(href="#") 退出
+          else
+            li.dropdown
+              a.dropdown-toggle(href="#", data-toggle="dropdown") 用户
+                span.caret
+              ul.dropdown-menu(role="menu")
+                li
+                  a(href="#") 注册
+                li.divider
+                li
+                  a(href="#") 登录
