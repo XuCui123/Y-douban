@@ -4,16 +4,14 @@ var multipart = require('connect-multiparty');
 var multipartMiddleware = multipart(); 
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
-var checkNotLogin = require('../middlewares/check').checkNotLogin;
 
 // GET /signup 进入注册页
-router.get('/', checkNotLogin, function(req, res, next) {
-	console.log('注册页');
+router.get('/', function(req, res, next) {
 	res.render('signup');
 });
 
 // POST /signup 用户注册
-router.post('/', checkNotLogin, multipartMiddleware,function(req, res, next) {
+router.post('/', multipartMiddleware,function(req, res, next) {
 	var _user = req.body;
 	var username = _user.username;
 	var password = _user.password;
@@ -40,9 +38,10 @@ router.post('/', checkNotLogin, multipartMiddleware,function(req, res, next) {
 			return res.redirect('/signin')
 		}else{
 			user = new User(_user);
-			console.log(user);
 			user.save(function(err, user) {
 				if(err) {console.log(err);}
+
+				req.session.user = user;
 				res.redirect('/');
 			});
 		}

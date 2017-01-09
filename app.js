@@ -68,6 +68,9 @@ app.use(session({
   })
 }));
 
+// 设置模板时间格式化常量
+app.locals.moment = require('moment');
+
 // 路由
 routes(app);
 

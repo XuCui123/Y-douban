@@ -3,8 +3,9 @@ extends ../layout
 block content
   section
     .container
-      h3 用户注册
+      h3
         span.glyphicon.glyphicon-tree-deciduous
+        | 用户注册
   section
     .container
       form.form-horizontal(method="post", action="/signup", role="form")
@@ -50,7 +51,7 @@ block content
   section.section-advertising
     .container
       .row
-        .col-md-5
+        .col-md-offset-1.col-md-5
           img(src="img/advertising-1.jpg", alt="advertising-1")
           h4 梦幻西游
           p
@@ -60,7 +61,7 @@ block content
             span.glyphicon.glyphicon-star
             span.glyphicon.glyphicon-star-empty
           p 《梦幻西游》是一款由中国网易公司自行开发并营运的网络游戏。游戏以著名的章回小说《西游记》故事为背景，透过Q版的人物，试图营造出浪漫的网络游戏风格。
-        .col-md-offset-2.col-md-5
+        .col-md-5
           img(src="img/advertising-2.jpg", alt="advertising-2")
           h4 侠盗猎车5(GTA5)
           p
@@ -70,6 +71,7 @@ block content
             span.glyphicon.glyphicon-star
             span.glyphicon.glyphicon-star
           p 《侠盗猎车手5》（Grand Theft Auto V），是由Rockstar Games游戏公司出版发行的一款围绕犯罪为主题的开放式动作冒险游戏。
+        .col-md-1
   include ../includes/footer
   script(src="../js/validation.js")
 
