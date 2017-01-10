@@ -7,7 +7,9 @@ var User = mongoose.model('User');
 
 // GET /signup 进入注册页
 router.get('/', function(req, res, next) {
-	res.render('signup');
+	res.render('signup', {
+		title: '注册啦！欢迎宝宝准备成为我的粉丝一员！'
+	});
 });
 
 // POST /signup 用户注册

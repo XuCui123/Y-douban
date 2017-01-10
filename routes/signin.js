@@ -5,7 +5,9 @@ var User = mongoose.model('User');
 
 // GET /signin 进入登录页
 router.get('/', function(req, res, next) {
-	res.render('signin');
+	res.render('signin', {
+		title: '哟，进来唠嗑咯？我已经迫不及待了....'
+	});
 });
 
 // POST /signin 用户登录

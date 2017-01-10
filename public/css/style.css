@@ -17,7 +17,7 @@ body{padding-top: 50px;}
 .correct{color: #24870d;}
 .section-advertising{margin: 50px 0;}
 
-.about{padding: 20px 0;}
+.about{padding: 20px 0;background-color: #ccc;}
 .about-content{border-radius: 4px;}
 .about-padding{padding: 10px 40px 50px;background-color: #fff;}
 .about-content h1{font-size: 16px;line-height: 49px;color: #363d40;border-bottom: 1px solid #eceff0;}
@@ -36,3 +36,6 @@ body{padding-top: 50px;}
 .about-contact h1{border-bottom: none;}
 .about-height{height: 600px;}
 .about-height dd{float: left;width: 335px;margin: 10px 0;}
+#about-list a:hover{cursor: pointer;}
+.dropdown:hover{cursor: pointer;}
+
