@@ -4,7 +4,6 @@ var mongoose = require('mongoose');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 var config = require('config-lite');
-var bodyParser = require('body-parser');
 var routes = require('./routes');
 var package = require('./package');
 var fs = require('fs');
@@ -22,11 +21,6 @@ mongoose.connection.on('disconnected', function(){
 });
 
 var app = express();
-
-// parse application/x-www-form-urlencoded 
-app.use(bodyParser.urlencoded({ extended: false }));
-// parse application/json 
-app.use(bodyParser.json());
 
 // 读取数据库模型
 var models_path = __dirname + '/models';
@@ -66,6 +60,12 @@ app.use(session({
   store: new MongoStore({// 将 session 存储到 mongodb
     url: config.mongodb// mongodb 地址
   })
+}));
+
+// 处理表单及文件上传的中间件
+app.use(require('express-formidable')({
+  uploadDir: path.join(__dirname, 'public/img'),// 上传文件目录
+  keepExtensions: true// 保留后缀
 }));
 
 // 设置模板时间格式化常量

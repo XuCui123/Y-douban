@@ -12,9 +12,8 @@ router.get('/', function(req, res, next) {
 
 // POST /signin 用户登录
 router.post('/', function(req, res, next) {
-	var _user = req.body;
-	var username = _user.username;
-	var password = _user.password;
+	var username = req.fields.username;
+	var password = req.fields.password;
 
 	User.findOne({username: username}, function(err, user) {
 		if(err) {console.log(err);}

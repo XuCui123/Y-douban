@@ -3,17 +3,29 @@ $(function() {
   	$('form :input').blur(function() {
   		var $parent = $(this).parent().parent();
   		$parent.find(".prompt-info").remove();
-  		//验证用户名
+      var $name = $('#username').val();
+  		// 验证用户名
   		if(this.id === 'username') {
   			if( this.value == "" || this.value.length < 6 || this.value.length > 11) {
-  				var erroMsg = '请输入6-11位的用户名';
+  				var erroMsg = '请输入6-11位的用户名!';
   				$parent.append('<div class="col-sm-3 prompt-info error">' + erroMsg + '</div>');
   			}else{
   				var correctMsg = 'OK';
   				$parent.append('<div class="col-sm-3 prompt-info correct"><span class="glyphicon glyphicon-ok">' + correctMsg + '</span></div>');
   			}
+        // ajax PUT请求验证用户名是否存在
+        $.ajax({
+          type: 'PUT',
+          url: '/signup?name=' + $name
+        }).done(function(results) {
+          if(results.success === 1) {
+            $parent.find(".prompt-info").remove();
+            var erroMsg = '用户名已存在!';
+            $parent.append('<div class="col-sm-3 prompt-info error">' + erroMsg + '</div>');
+          }
+        });
   		}
-  		//验证密码长度
+  		// 验证密码是否符合规则
   		if(this.id === 'password') {
   			var value = $('#password').val();
   			var num = 0;
@@ -36,7 +48,7 @@ $(function() {
   				var correctMsg = 'OK';
   				$parent.append('<div class="col-sm-3 prompt-info correct"><span class="glyphicon glyphicon-ok">' + correctMsg + '</span></div>');
   			}else if(value.length < 6 || value.length > 16) {
-  				var erroMsg = '密码由6-16个字符组成';
+  				var erroMsg = '密码由6-16个字符组成!';
   				$parent.append('<div class="col-sm-3 prompt-info error">' + erroMsg + '</div>');
   			}else if(num == 1) {
   				if(number == 1) {
@@ -49,7 +61,7 @@ $(function() {
   				}
   			}
   		}
-  		//验证确认密码和密码是否一致
+  		// 验证确认密码和密码是否一致
   		if(this.id == 'confirmPassword') {
   			var password = $('#password').val();
   			var confirmPassword = $('#confirmPassword').val();
@@ -59,14 +71,15 @@ $(function() {
   			}else{
   				var erroMsg = '两次密码输入不一致!';
   				$parent.append('<div class="col-sm-3 prompt-info error">' + erroMsg + '</div>');
-  				}
   			}
-  	var numError = $('form .error').length;
-      	if(numError){
-        	$('#btn-submit').attr("disabled", "disabled");
-      	}else{
-      		$('#btn-submit').removeAttr("disabled", "disabled");
-      	} 	
+  		}
+      // 有错误信息禁用提交按钮
+    	var numError = $('form .error').length;
+        	if(numError){
+          	$('#btn-submit').attr("disabled", "disabled");
+        	}else{
+        		$('#btn-submit').removeAttr("disabled", "disabled");
+        	} 	
   	});
 
   	//重置按钮
@@ -75,7 +88,6 @@ $(function() {
               var formGroups = $('.form-group');
               for(var i = 0; i < 3;i++) {
               	var erroMsg = '两次密码输入不一致!';
-              	console.log(formGroups[i]);
               	$(formGroups[i]).append('<div class="col-sm-3 glyphicon glyphicon-asterisk prompt-info error"></div>');
               }
        });

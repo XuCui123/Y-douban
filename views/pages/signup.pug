@@ -8,7 +8,7 @@ block content
         | 用户注册
   section
     .container
-      form.form-horizontal(method="post", action="/signup", role="form")
+      form.form-horizontal(method="post", action="/signup", role="form", enctype="multipart/form-data")
         .form-group
           label.col-sm-3.control-label(for="username") 用户名
           .col-sm-6
