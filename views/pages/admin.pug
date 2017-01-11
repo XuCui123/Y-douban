@@ -1,25 +1,24 @@
-doctype
-html(lang="zh-cn")
-  head
-    meta(charset="UTF-8")
-    meta(http-equiv="X-UA-Compatible" content="IE=edge")
-    meta(name="viewport" content="width=device-width, initial-scale=1")
-    title #{title}
-    link(rel="stylesheet" href="../css/bootstrap.min.css")
-    link(rel="stylesheet" href="../css/style.css")
-    script(src="../js/jquery-3.1.1.min.js")
-    script(src="../js/bootstrap.min.js")
-  body
-    .admin
-      .container
-        .admin-box
-          form(role="form")
-            .form-group
-              label(for="username") Admin：
-              input.form-control#username(type="text")
-            .form-group
-              label(for="password") Passowrd：
-              input.form-control#password(type="password")
-            .form-group
-              button.btn.btn-default(type="submit") GO
-              a.btn.btn-default(href="/") Home
+extends ../layout
+
+block content
+  section.admin-box
+    .container
+      .row
+        .col-md-offset-1.col-md-5
+          h2
+            span.glyphicon.glyphicon-tasks
+            | 用户管理
+          p &nbsp;
+          p 让我来瞅瞅都有谁！！
+          p &nbsp;
+          a.btn.btn-default GO,GO,GO
+        .col-md-5
+          h2
+            span.glyphicon.glyphicon-tower
+            | 游戏管理
+          p &nbsp;
+          p 做一个努力的管理员！！
+          p &nbsp;
+          a.btn.btn-default GO,GO,GO
+        .col-md-1
+  include ../includes/footer

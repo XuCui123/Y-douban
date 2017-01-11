@@ -38,4 +38,6 @@ body{padding-top: 50px;}
 .about-height dd{float: left;width: 335px;margin: 10px 0;}
 #about-list a:hover{cursor: pointer;}
 .dropdown:hover{cursor: pointer;}
-
+.admin-box{background: url("../img/admin-background.jpg");height: 600px;}
+.signinerror-box{width: 560px; height: 360px;background-color: #ccc;padding: 20px;position: absolute;left: 50%;top: 50%;margin-left: -300px;margin-top: -200px;border-radius: 20px;}
+#signinerror{color: #f00;font-size: 22px;}

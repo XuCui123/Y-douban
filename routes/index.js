@@ -27,5 +27,12 @@ module.exports = function(app) {
 			title: '这是关于啊，大哥大姐！！'
 		});
 	});
+	// 管理员页面
 	app.use('/admin', require('./admin'));
+	// 请求失败，转入请求登录页面
+	app.get('/signinerror', function(req, res, netx) {
+		res.render('signinerror', {
+			title: '还没登录呢！！'
+		});
+	});
 }
