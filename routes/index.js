@@ -29,10 +29,19 @@ module.exports = function(app) {
 	});
 	// 管理员页面
 	app.use('/admin', require('./admin'));
+	// 用户管理页面
+	app.use('/admin/userlist', require('./adminuserlist'));
+	
 	// 请求失败，转入请求登录页面
-	app.get('/signinerror', function(req, res, netx) {
+	app.get('/signinerror', function(req, res, next) {
 		res.render('signinerror', {
 			title: '还没登录呢！！'
+		});
+	});
+	// 请求失败，转入不是管理员页面
+	app.get('/adminerror', function(req, res, next) {
+		res.render('adminerror', {
+			title: '不要太跳哦，你不是管理员！！'
 		});
 	});
 }

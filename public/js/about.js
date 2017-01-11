@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(function() {
 	var $aboutTitles = $('#about-list a');
 	$aboutTitles.click(function() {
 		$(this).addClass("active").siblings().removeClass("active");

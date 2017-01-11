@@ -1,5 +1,5 @@
 window.onload = function() {
-	var p = document.getElementById('signinerror');
+	var p = document.getElementById('error-info');
 	var timer = null;
 	var time = 30;
 	timer = setInterval(function() {
