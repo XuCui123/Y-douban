@@ -3,9 +3,9 @@ module.exports = function(app) {
 
 	app.use(function(req, res, next) {
 		var _user = req.session.user;
-
 		app.locals.user = _user;
-
+		var _error = req.flash('error').toString();
+		app.locals.error = _error;
 		next();
 	});
 

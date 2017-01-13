@@ -5,22 +5,33 @@ var Schema = mongoose.Schema;
 
 // 用户模型
 var UserSchema = new Schema({
-	username:{
+	username: {
 		uniqe: true,
 		type: String
 	},
 	password: String,
-	// role > 10为管理员
-	role: {
-		type: Number,
-		default: 0
+	//昵称 用于显示
+	nickname: {
+		uniqe: true,
+		type: String
 	},
 	gender: {
 		type: String,
 		enum: ['m','f','x']
 	},
+	age: Number,
+	constellation: {
+		type: String,
+		enum: ['Aries','Taurus','Gemini','Cancer','Leo','Virgo','Libra','Scorpio',
+		'Sagittarius','Capricorn','Aquarius','Pisces']
+	},
 	avatar: String,
 	bio: String,
+	// 权限 role > 10为管理员
+	role: {
+		type: Number,
+		default: 0
+	},
 	meta: {
 		createAt: {
 		  type: Date,

@@ -19,6 +19,7 @@ router.post('/', function(req, res, next) {
 		if(err) {console.log(err);}
 
 		if(user == null) {
+			req.flash('error', '用户名不存在！')
 			return res.redirect('/signin');
 		}
 
@@ -27,10 +28,9 @@ router.post('/', function(req, res, next) {
 
 			if(isMatch) {
 				req.session.user = user;
-
 				return res.redirect('/');
 			}else{
-				console.log('密码错误');
+				req.flash('error', '密码错误！')
 				return res.redirect('signin');
 			}
 		});

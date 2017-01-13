@@ -32,9 +32,12 @@ header
         ul.nav.navbar-nav.navbar-right
           if user
             li
-              a(href="#") 欢迎你，#{user.username}
+              a(href="#") 欢迎你，#{user.nickname}
             li
               a(href="/signout") 退出
+            if user.role > 10
+              li
+                a(href='/admin') 管理网站      
           else
             li.dropdown
               a.dropdown-toggle(href="#", data-toggle="dropdown") 用户

@@ -10,6 +10,8 @@ body{padding-top: 50px;}
 .feature-heading{font-size: 40px;color: #2a6496;}
 .footer{padding: 15px 0;background-color: #222;border: 1px solid #080808;}
 .footer p{color: #fff;}
+.notification-info{height: 25px;}
+.notification-info p{color: #f00;font-size: 18px;font-weight: bold;}
 
 .user-container{width: 800px;margin: 0 auto;}
 .prompt-info{padding-top: 7px;}
