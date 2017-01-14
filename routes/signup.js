@@ -4,9 +4,10 @@ var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var fs = require('fs');
 var path = require('path');
+var checkNotLogin = require('../middlewares/check').checkNotLogin;
 
 // PUT /signup/username ajax交互验证用户名是否存在
-router.put('/username', function(req, res, next) {
+router.put('/username', checkNotLogin, function(req, res, next) {
 	var name = req.query.name;
 	User.findOne({username: name}, function(err, user) {
 		if(err) {console.log(err);}
@@ -19,7 +20,7 @@ router.put('/username', function(req, res, next) {
 	});
 });
 // PUT /signup/nickname ajax交互验证昵称是否存在
-router.put('/nickname', function(req, res, next) {
+router.put('/nickname', checkNotLogin, function(req, res, next) {
 	var nickname = req.query.nickname;
 	User.findOne({nickname: nickname}, function(err, user) {
 		if(err) {console.log(err);}
@@ -32,14 +33,14 @@ router.put('/nickname', function(req, res, next) {
 	});
 });
 // GET /signup 进入注册页
-router.get('/', function(req, res, next) {
+router.get('/', checkNotLogin, function(req, res, next) {
 	res.render('signup', {
 		title: '注册啦！欢迎宝宝准备成为我的粉丝一员！'
 	});
 });
 
 // POST /signup 用户注册
-router.post('/', function(req, res, next) {
+router.post('/', checkNotLogin, function(req, res, next) {
 	var username = req.fields.username;
 	var password = req.fields.password;
 	var confirmPassword = req.fields.confirmPassword;

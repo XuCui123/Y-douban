@@ -64,7 +64,8 @@ UserSchema.pre('save', function(next) {
 		});
 	});
 });
-// User模型方法
+
+// 密码比较
 UserSchema.methods = {
 	comparePassword: function(_password, callback) {
 		bcrypt.compare(_password, this.password, function(err, isMatch) {
@@ -74,7 +75,7 @@ UserSchema.methods = {
 		});
 	}
 }
-// 静态方法
+// 查找方法
 UserSchema.statics = {
   fetch: function(callback) {
     return this

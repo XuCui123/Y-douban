@@ -1,0 +1,11 @@
+extends ../layout
+
+block content
+  section
+    .container
+      each post in posts
+        .panel.panel-default
+          .panel-heading
+            h3.panel-title #{post.title}
+          .panel-body
+            p #{post.content}

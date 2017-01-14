@@ -21,6 +21,10 @@ module.exports = function(app) {
 	app.use('/signin', require('./signin'));
 	// 登出
 	app.use('/signout', require('./signout'));
+	// 用户信息
+	app.use('/user', require('./user'));
+	// 论坛
+	app.use('/posts', require('./posts'));
 	// 关于
 	app.get('/about', function(req, res, next) {
 		res.render('about', {

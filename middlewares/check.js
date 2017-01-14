@@ -5,6 +5,12 @@ module.exports = {
     	}
     	next();
   	},
+  	checkNotLogin: function checkNotLogin(req, res, next) {
+  		if (req.session.user) {
+  			return res.redirect('/');
+  		}
+  		next();
+  	},
   	isAdmin: function isAdmin(req, res, next) {
 		var _user = req.session.user;
 		var role = _user.role;

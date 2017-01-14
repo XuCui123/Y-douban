@@ -44,3 +44,11 @@ body{padding-top: 50px;}
 .error-box{width: 560px; height: 360px;background-color: #ccc;padding: 20px;position: absolute;left: 50%;top: 50%;margin-left: -300px;margin-top: -200px;border-radius: 20px;}
 #error-info{color: #f00;font-size: 22px;}
 .adminuserlist{margin-top: 50px;}
+
+.user-info{background-color: #ccc;padding: 50px 0 350px 0;}
+.user-avatar-box{display: block;width: 200px;height: 200px;overflow: hidden;;}
+.user-avatar-box img{width: 200px; height: 200px;}
+
+.create-post{background-color: #ccc;padding: 50px 0 100px;}
+.user-nickname-box{display: block;margin-top: 10px;width: 200px;text-align: center}
+.user-nickname-box p{font-family: '微软雅黑';font-size: 18px;font-weight: bold;}
