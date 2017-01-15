@@ -5,14 +5,14 @@ var Post = mongoose.model('Post');
 var User = mongoose.model('User');
 var checkLogin = require('../middlewares/check').checkLogin;
 
-// GET /posts/create 发表一个帖子
+// GET /posts/create 发表一个帖子页
 router.get('/create', checkLogin, function(req, res, next) {
-	res.render('createpost', {
+	res.render('postcreate', {
 		title: 'Come on 发个帖吧！'
 	});
 });
 
-// POST /posts 发表一篇文章
+// POST /posts 发表一个帖子
 router.post('/create', checkLogin, function(req, res, next) {
 	var author = req.session.user._id;
 	var title = req.fields.title;
@@ -47,15 +47,21 @@ router.post('/create', checkLogin, function(req, res, next) {
 
 // GET /posts 论坛页
 router.get('/', function(req, res, netx) {
+	var page = parseInt(req.query.p, 10) || 0;
+	var count = 1;
+	var index = page * count;
+
 	Post.fetch(function(err, posts) {
 		if(err) {console.log(err);}
 
 		// 反转数组，倒序排列帖子
-		posts = posts.reverse();
-
+		posts = posts.reverse()
+		results = posts.slice(index, index + count);
 		res.render('posts', {
 			title: '欢迎来到唠嗑圣地！！',
-			posts: posts
+			currentPage: (page+1),
+			totalPage: Math.ceil(posts.length / count),
+			posts: results,
 		});
 	});
 });
@@ -78,5 +84,51 @@ router.get('/:postId', function(req, res, next) {
 		});
 	});
 });
+
+// GET /posts/:postId/edit 更新帖子页
+router.get('/:postId/edit', checkLogin, function(req, res, next) {
+	var postId = req.params.postId;
+	var author = req.session.user._id;
+
+	Post.findById(postId, function(err, post) {
+		if(!post) {
+			throw new Error('该帖子不存在！');
+		}
+		if(author.toString() !== post.author.toString()) {
+			throw new Error('无权操作！');
+		}
+		res.render('postedit', {
+			title: post.title + '更新！',
+			post: post
+		});
+	});
+});
+
+// POST /posts/:postId/edit 更新帖子
+router.post('/:postId/edit', checkLogin, function(req, res, next) {
+	var postId = req.params.postId;
+	var author = req.session.user._id;
+	var title = req.fields.title;
+	var content = req.fields.content;
+
+	Post.update({_id: postId, author: author}, {$set: {title: title, content: content}}, function(err) {
+		if(err) {console.log(err);}
+
+		res.redirect('/posts/' + post._id);
+	});
+});
+
+// GET /posts/:postId 删除一篇帖子
+router.get('/:postId/remove', checkLogin, function(req, res, next) {
+	var postId = req.params.postId;
+	var author = req.session.user._id;
+
+	Post.remove({_id: postId, author: author}, function(err) {
+		if(err) {console.log(err);}
+
+		res.redirect('/posts');
+	});
+});
+
 
 module.exports = router;
