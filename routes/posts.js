@@ -46,44 +46,48 @@ router.post('/create', checkLogin, function(req, res, next) {
 });
 
 // GET /posts 论坛页
-router.get('/', function(req, res, netx) {
+router.get('/', checkLogin, function(req, res, next) {
 	var page = parseInt(req.query.p, 10) || 0;
-	var count = 1;
+	var count = 6;
 	var index = page * count;
 
-	Post.fetch(function(err, posts) {
-		if(err) {console.log(err);}
+	Post
+		.find({})
+		.populate({path: 'author', model: 'User'})
+		.exec(function(err, posts) {
+			if(err) {console.log(err);}
 
-		// 反转数组，倒序排列帖子
-		posts = posts.reverse()
-		results = posts.slice(index, index + count);
-		res.render('posts', {
-			title: '欢迎来到唠嗑圣地！！',
-			currentPage: (page+1),
-			totalPage: Math.ceil(posts.length / count),
-			posts: results,
-		});
+			// 反转数组，倒序排列帖子
+			posts = posts.reverse();
+			// 截取显示元素
+			results = posts.slice(index, index + count);
+
+			res.render('posts', {
+				title: '欢迎来到唠嗑圣地！！',
+				currentPage: (page+1),
+				totalPage: Math.ceil(posts.length / count),
+				posts: results
+			});
 	});
 });
 
 // GET /posts/:postId 单独一篇帖子
-router.get('/:postId', function(req, res, next) {
+router.get('/:postId', checkLogin,function(req, res, next) {
 	var postId = req.params.postId;
 
 	Post.update({_id: postId}, {$inc: {pv: 1}}, function(err) {
 		if(err) {console.log(err);}
 	});
 
-	Post.findById(postId, function(err, post) {
-		User.findById(post.author, function(err, user) {
+	Post.findOne({_id: postId})
+		.populate({path: 'author', model: 'User'})
+		.exec(function(err, post) {
 		  	res.render('postdetail', {
 		  		title: post.title,
-		  		user: user,
 		  		post: post
 		  	});
 		});
 	});
-});
 
 // GET /posts/:postId/edit 更新帖子页
 router.get('/:postId/edit', checkLogin, function(req, res, next) {

@@ -52,3 +52,17 @@ body{padding-top: 50px;}
 .create-post{background-color: #ccc;padding: 50px 0 100px;}
 .user-nickname-box{display: block;margin-top: 10px;width: 200px;text-align: center}
 .user-nickname-box p{font-family: '微软雅黑';font-size: 18px;font-weight: bold;}
+
+.posts-content-box{height: 450px;}
+.users-content-box{height: 345px;}
+.goback-padding-bottom{padding-bottom: 30px;}
+
+/* postdetail */
+.replay-a-height{line-height: 70px;}
+.replay-a-height a{padding-left: 5px;color: #fff;font-family: '微软雅黑';text-decoration: none;}
+.replay-a-height span{padding: 10px;margin-right: 10px;}
+.post-content{height: 200px;}
+.post-content img{width: 130px; height: 150px;padding: 50px 0 0 25px;}
+.post-content .post-content-nickname{text-align: center;font-size: 12px;margin-top: 10px;}
+.post-avatar-wrap{height: 100%;background-color: #CED}
+.post-replay-tail{position: absolute; bottom: -160px; right: 50px;}

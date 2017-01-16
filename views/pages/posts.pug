@@ -9,14 +9,17 @@ block content
             h3
               span.glyphicon.glyphicon-certificate
               | 欢迎来到唠嗑地儿！
-        each post in posts
-          a(href="#")
+              a.pull-right(href="/posts/create") 发帖
+        .posts-content-box
+          each post in posts
             .panel.panel-default
               .panel-body
-                span.col-md-1 #{post.pv}
-                p.col-md-6 #{post.title}
-                span.col-md-2 #{user.nickname}
-                span.col-md-3 #{moment(post.meta.updateAt).format('YYYY-MM-DD, h:mm:ss a')}
+                span.col-sm-1.label.label-default #{post.pv}
+                a.col-sm-7(href="/posts/" + post._id) #{post.title}
+                .col-sm-2
+                  span.glyphicon.glyphicon-user
+                  a(href="/user/" + post.author._id) #{post.author.nickname}
+                span.col-sm-2 #{moment(post.meta.updateAt).format('YYYY-MM-DD, hh:mm:ss')}
         ul.pagination
           li
             - if (currentPage == 1) {
@@ -39,3 +42,4 @@ block content
             - }else{
                 a(href='/posts?p=' + (currentPage)) &raquo;
             - } 
+  include ../includes/footer

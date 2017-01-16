@@ -1,3 +1,33 @@
 extends ../layout
 
 block content
+    .container
+      .row
+        h3.col-md-6 #{post.title}
+        .replay-a-height.col-md-6
+          span.label.label-primary
+            .glyphicon.glyphicon-comment
+            a(href="#") 回复
+          - if(user && post.author._id && user._id.toString() === post.author._id.toString()) {
+            span.label.label-primary
+              .glyphicon.glyphicon-comment
+              a(href="/posts/" + post._id + '/edit') 编辑
+            span.label.label-primary
+              .glyphicon.glyphicon-comment
+              a(href="/posts/" + post._id + '/remove') 删除
+          - }
+      hr.divider 
+      .post-content
+        .col-md-2.post-avatar-wrap
+          img(src="../upload/" + user.avatar)
+          p.post-content-nickname #{post.author.nickname}
+        .col-md-10
+          p #{post.content}
+          span.post-replay-tail 
+            span 1楼
+            span &nbsp;
+            span #{moment(post.meta.createAt).format('YYYY-MM-DD hh:mm')}
+            span &nbsp;
+            a(href="#") 回复
+      hr.divider 
+

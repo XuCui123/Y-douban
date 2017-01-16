@@ -15,12 +15,25 @@ router.get('/', checkLogin, isAdmin, function(req, res, next) {
 });
 // GET /admin/userlist 进入管理用户页
 router.get('/userlist', checkLogin, isAdmin, function(req, res, next) {
+	var page = parseInt(req.query.p, 10) || 0;
+	var count = 6;
+	var index = page * count;
+
 	User.fetch(function(err, users) {
 		if(err) {console.log(err);}
 
+		for(var i=0;i<users.length;i++) {
+			if(users[i].username == 'AdminYDR') {
+				users = users.splice(i+1);
+			}
+		}
+
+		results = users.slice(index, index + count);
 		res.render('adminuserlist', {
 			title: '欢迎来到用户管理的地盘！！',
-			users: users
+			currentPage: (page+1),
+			totalPage: Math.ceil(users.length / count),
+			users: results,
 		});
 	});
 });
