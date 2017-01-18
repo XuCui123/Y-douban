@@ -3,6 +3,7 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var Post = mongoose.model('Post');
 var User = mongoose.model('User');
+var Comment = mongoose.model('Comment');
 var checkLogin = require('../middlewares/check').checkLogin;
 
 // GET /posts/create 发表一个帖子页
@@ -74,7 +75,7 @@ router.get('/', checkLogin, function(req, res, next) {
 // GET /posts/:postId 单独一篇帖子
 router.get('/:postId', checkLogin,function(req, res, next) {
 	var postId = req.params.postId;
-
+	var i = 1;
 	Post.update({_id: postId}, {$inc: {pv: 1}}, function(err) {
 		if(err) {console.log(err);}
 	});
@@ -82,11 +83,17 @@ router.get('/:postId', checkLogin,function(req, res, next) {
 	Post.findOne({_id: postId})
 		.populate({path: 'author', model: 'User'})
 		.exec(function(err, post) {
-		  	res.render('postdetail', {
-		  		title: post.title,
-		  		post: post
-		  	});
-		});
+		  	Comment.find({postId: postId})
+		  		   .populate({path: 'replyer', model: 'User'})
+		  		   .exec(function(err, comments) {
+				  		res.render('postdetail', {
+					  		title: post.title,
+					  		post: post,
+					  		comments: comments,
+					  		i: i
+		  				});
+		  			});
+			});
 	});
 
 // GET /posts/:postId/edit 更新帖子页
@@ -134,5 +141,35 @@ router.get('/:postId/remove', checkLogin, function(req, res, next) {
 	});
 });
 
+// POST /posts/:postId/comment 创建一条回复
+router.post('/:postId/comment', checkLogin, function(req, res, next) {
+	var postId = req.params.postId;
+	var content = req.fields.content;
+	var replyer = req.session.user._id;
+
+	// 校验参数
+	try{
+		if(!content.length) {
+			throw new Error('回复内容不能为空！');
+		}
+	}catch(e) {
+		req.flash('error', e.message);
+		return res.redirect('back');
+	}
+	// 待写入数据库帖子信息
+	var _comment = {
+		postId: postId,
+		content: content,
+		replyer: replyer
+	}
+
+	comment = new Comment(_comment);
+	comment.save(function(err, post) {
+		if(err) {console.log(err);}
+
+		res.redirect('/posts/' + postId);
+	});
+
+});
 
 module.exports = router;
