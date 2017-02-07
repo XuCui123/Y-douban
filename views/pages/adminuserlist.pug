@@ -19,7 +19,7 @@ block content
                 tr(class="item-id-" + item._id)
                   td #{item.username}
                   td #{item.nickname}
-                  td #{moment(item.meta.updateAt).format('YYYY-MM-DD, hh:mm:ss')}
+                  td #{moment(item.meta.updateAt).format('YYYY-MM-DD, HH:mm:ss')}
                   td: a(target="_blank", href="../user/" + item._id) 查看
                   td: a(target="_blank", href="#") 修改
                   td

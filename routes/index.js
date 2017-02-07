@@ -23,6 +23,8 @@ module.exports = function(app) {
 	app.use('/signout', require('./signout'));
 	// 用户信息
 	app.use('/user', require('./user'));
+	// 游戏
+	app.use('/games', require('./games'));
 	// 论坛
 	app.use('/posts', require('./posts'));
 	// 关于

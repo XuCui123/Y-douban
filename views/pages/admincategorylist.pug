@@ -1,0 +1,21 @@
+extends ../layout
+
+block content
+  section.adminuserlist
+    .container
+      .row
+        table.table.table-hover.table-bordered
+          thead
+            tr
+              th 分类名字
+              th 修改时间
+              th 修改
+              th 删除
+          tbody
+            each category in categories
+              tr(class="category-id-" + category._id)
+                td #{category.name}
+                td #{moment(category.meta.updateAt).format('YYYY-MM-DD, HH:mm:ss')}
+                td: a(target="_blank",href="#") 修改
+                td
+                  button.btn.btn-danger.del(type="button", data-id="#{item._id}") 删除

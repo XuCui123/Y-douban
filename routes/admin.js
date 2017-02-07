@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
+var Category = mongoose.model('Category');
 var check = require('../middlewares/check');
 
 var checkLogin = check.checkLogin;
@@ -50,6 +51,54 @@ router.delete('/userlist', checkLogin, isAdmin, function(req, res, next) {
 			}
 		});
 	}
+});
+
+// GET /admin/games 进入游戏管理页
+router.get('/games', checkLogin, isAdmin, function(req, res, next) {
+	res.render('admingames', {
+		title: '游戏管理！！'
+	});
+});
+// GET /admin/category/create 进入分类录入页
+router.get('/category/create', checkLogin, isAdmin, function(req, res, next) {
+	res.render('admincategorycreate', {
+		title: '欢迎大大前来录入分类信息！'
+	});
+});
+// POST /admin/category/create 分类录入
+router.post('/category/create', checkLogin, isAdmin, function(req, res, next) {
+	var categoryName = req.fields.categoryName;
+	var _category = {
+		name: categoryName
+	}
+	var category = new Category(_category);
+
+	category.save(function(err, category) {
+		if(err) {console.log(err);}
+
+		res.redirect('/admin/category/list')
+	});
+});
+// GET /admin/category/list 进入分类列表页
+router.get('/category/list', checkLogin, isAdmin, function(req, res, next) {
+	Category.fetch(function(err, categories) {
+		if(err) {console.log(err);}
+
+		res.render('admincategorylist', {
+			title: '分类列表展示给您观看！',
+			categories: categories
+		});
+	});
+});
+// GET /admin/games/create 进入游戏录入页
+router.get('/game/create', checkLogin, isAdmin, function(req, res, next) {
+	Category.find({},function(err, categories){
+		res.render('admingamecreate', {
+			title: '欢迎大大前来录入游戏信息！',
+			categories: categories,
+			game: {}
+		});
+	});
 });
 
 module.exports = router;
