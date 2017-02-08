@@ -3,11 +3,12 @@ var Schema = mongoose.Schema;
 var ObjectId = Schema.Types.ObjectId;
 
 var GameSchema = new Schema({
-	title: String,
+	name: String,
 	poster: String,
-	summary: String,
 	flash: String,
 	year: Number,
+	url: String,
+	summary: String,
 	category: {
 		type: ObjectId,
 		ref: 'Category'

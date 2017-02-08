@@ -33,6 +33,9 @@ module.exports = function(app) {
 			title: '这是关于啊，大哥大姐！！'
 		});
 	});
+	// 搜索
+	app.use('/search', require('./search'));
+
 	// 管理员页面
 	app.use('/admin', require('./admin'));
 

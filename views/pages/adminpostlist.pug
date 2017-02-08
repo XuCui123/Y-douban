@@ -1,0 +1,21 @@
+extends ../layout
+
+block content
+  section.adminuserlist
+    .container
+      .row
+        table.table.table-hover.table-bordered
+          thead
+            tr
+              th 标题
+              th 修改时间
+              th 修改
+              th 删除
+          tbody
+            each post in posts
+              tr(class="post-id-" + post._id)
+                td #{post.name}
+                td #{moment(post.meta.updateAt).format('YYYY-MM-DD, HH:mm:ss')}
+                td: a(target="_blank",href="#") 修改
+                td
+                  button.btn.btn-danger.del(type="button", data-id="#{post._id}") 删除

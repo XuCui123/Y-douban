@@ -1,0 +1,21 @@
+extends ../layout
+
+block content
+  section.adminuserlist
+    .container
+      .row
+        table.table.table-hover.table-bordered
+          thead
+            tr
+              th 游戏名字
+              th 修改时间
+              th 修改
+              th 删除
+          tbody
+            each game in games
+              tr(class="game-id-" + game._id)
+                td #{game.name}
+                td #{moment(game.meta.updateAt).format('YYYY-MM-DD, HH:mm:ss')}
+                td: a(target="_blank",href="#") 修改
+                td
+                  button.btn.btn-danger.del(type="button", data-id="#{game._id}") 删除
