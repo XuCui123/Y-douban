@@ -57,9 +57,31 @@ router.get('/', checkLogin, function(req, res, next) {
 		.populate({path: 'author', model: 'User'})
 		.exec(function(err, posts) {
 			if(err) {console.log(err);}
+			
+			// 冒泡排序 完成帖子点击量排序
+		  	var sortPosts = function(array) {
+		  		var i,j,temp;
 
-			// 反转数组，倒序排列帖子
-			posts = posts.reverse();
+		  		for(i = 0; i < array.length; i++) {
+		  			for(j = i + 1; j < array.length; j++) {
+		  				if(array[j].pv > array[i].pv) {
+		  					temp = array[i];
+		  					array[i] = array[j];
+		  					array[j] = temp;
+		  				}else if(array[j].pv === array[i].pv) {
+		  					if(array[j].meta.updateAt > array[i].meta.updateAt) {
+		  						temp = array[i];
+		  						array[i] = array[j];
+		  						array[j] = temp;
+		  					}
+		  				}
+		  			}
+		  		}
+		  		return array;
+		  	}
+
+	 		sortPosts(posts);
+
 			// 截取显示元素
 			results = posts.slice(index, index + count);
 

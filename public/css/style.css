@@ -43,7 +43,7 @@ body{padding-top: 50px;}
 .admin-box{background: url("../img/admin-background.jpg");height: 600px;}
 .error-box{width: 560px; height: 360px;background-color: #ccc;padding: 20px;position: absolute;left: 50%;top: 50%;margin-left: -300px;margin-top: -200px;border-radius: 20px;}
 #error-info{color: #f00;font-size: 22px;}
-.adminuserlist{margin-top: 50px;}
+.adminlist{margin-top: 50px;}
 
 .user-info{background-color: #ccc;padding: 50px 0 350px 0;}
 .user-avatar-box{display: block;width: 200px;height: 200px;overflow: hidden;;}
@@ -55,6 +55,9 @@ body{padding-top: 50px;}
 
 .posts-content-box{height: 450px;}
 .users-content-box{height: 345px;}
+.categories-content-box{height: 345px;}
+.games-content-box{height: 345px;}
+.posts-content-box{height: 345px;}
 .goback-padding-bottom{padding-bottom: 30px;}
 
 /* postdetail */

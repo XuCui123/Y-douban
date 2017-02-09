@@ -3,7 +3,10 @@ var Schema = mongoose.Schema;
 var ObjectId = Schema.Types.ObjectId;
 
 var CategorySchema = new Schema({
-	name: String,
+	name: {
+		uniqe: true,
+		type: String
+	},
 	games: [{type: ObjectId, ref: 'Game'}],
 	meta: {
 	  createAt: {

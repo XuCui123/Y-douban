@@ -10,6 +10,11 @@ block content
               span.glyphicon.glyphicon-certificate
               | 欢迎来到唠嗑地儿！
               a.pull-right(href="/posts/create") 发帖
+              form(method='GET', action='/search/posts')
+                .input-group.col-sm-4
+                  input.form-control(type='text', name='q')
+                  span.input-group-btn
+                    button.btn.btn-default(type='submit') 搜索
         .posts-content-box
           each post in posts
             .panel.panel-default

@@ -38,7 +38,7 @@ router.get('/userlist', checkLogin, isAdmin, function(req, res, next) {
 			title: '欢迎来到用户管理的地盘！！',
 			currentPage: (page+1),
 			totalPage: Math.ceil(users.length / count),
-			users: results,
+			users: results
 		});
 	});
 });
@@ -81,18 +81,26 @@ router.post('/category/create', checkLogin, isAdmin, function(req, res, next) {
 	category.save(function(err, category) {
 		if(err) {console.log(err);}
 
-		res.redirect('/admin/category/list');
+		res.redirect('/admin/categorylist');
 	});
 });
 
 // GET /admin/categorylist 进入分类列表页
 router.get('/categorylist', checkLogin, isAdmin, function(req, res, next) {
+	var page = parseInt(req.query.p, 10) || 0;
+	var count = 6;
+	var index = page * count;
+
 	Category.fetch(function(err, categories) {
 		if(err) {console.log(err);}
 
+		results = categories.slice(index, index + count);
+
 		res.render('admincategorylist', {
 			title: '分类列表展示给您观看！',
-			categories: categories
+			currentPage: (page+1),
+			totalPage: Math.ceil(categories.length / count),
+			categories: results
 		});
 	});
 });
@@ -110,6 +118,7 @@ router.get('/game/create', checkLogin, isAdmin, function(req, res, next) {
 
 // POST /admin/game/create 游戏录入
 router.post('/game/create', checkLogin, isAdmin, function(req, res, next) {
+	var gamecategory = req.fields.gamecategory;
 	var gamename = req.fields.gamename;
 	if(req.files.uploadposter.name) {
 		gameposter = req.files.uploadposter.path.split(path.sep).pop();
@@ -152,6 +161,7 @@ router.post('/game/create', checkLogin, isAdmin, function(req, res, next) {
 	}
 
 	var _game = {
+		category: gamecategory,
 		name: gamename,
 		poster: gameposter,
 		flash: gameflash,
@@ -187,24 +197,46 @@ router.post('/game/create', checkLogin, isAdmin, function(req, res, next) {
 
 // GET /admin/gamelist 进入游戏列表页
 router.get('/gamelist', checkLogin, isAdmin, function(req, res, next) {
+	var page = parseInt(req.query.p, 10) || 0;
+	var count = 6;
+	var index = page * count;
+
 	Game.fetch(function(err, games) {
 		if(err) {console.log(err);}
 
+		results = games.slice(index, index + count);
+
 		res.render('admingamelist', {
 			title: '游戏列表展示给您观看！',
-			games: games
+			currentPage: (page+1),
+			totalPage: Math.ceil(games.length / count),
+			games: results
 		});
 	});
 });
 
-// GET /admin/gamelist 进入帖子列表页
+// GET /admin/postlist 进入帖子列表页
 router.get('/postlist', checkLogin, isAdmin, function(req, res, next) {
-	Post.fetch(function(err, posts) {
+	var page = parseInt(req.query.p, 10) || 0;
+	var count = 6;
+	var index = page * count;
+
+	Post
+		.find({})
+		.populate({
+	  	  path: 'author',
+	  	  model: 'User'
+		})
+		.exec(function(err, posts) {
 		if(err) {console.log(err);}
+
+		results = posts.slice(index, index + count);
 
 		res.render('adminpostlist', {
 			title: '帖子列表展示给您观看！',
-			posts: posts
+			currentPage: (page+1),
+			totalPage: Math.ceil(posts.length / count),
+			posts: results
 		});
 	});
 });
