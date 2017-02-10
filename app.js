@@ -10,6 +10,7 @@ var package = require('./package');
 var fs = require('fs');
 
 mongoose.connect(config.mongodb);
+
 // 测试mongodb连接是否成功
 mongoose.connection.on('connected', function(){
     console.log('Connection success!');
@@ -42,6 +43,7 @@ var walk = function(path) {
     });
 }
 walk(models_path);
+
 // 设置模板目录
 app.set('views', path.join(__dirname, './views/pages'));
 // 设置模板引擎为pug

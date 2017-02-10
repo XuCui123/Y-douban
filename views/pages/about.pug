@@ -12,7 +12,7 @@ block content
             a.list-group-item 游戏纠错
             a.list-group-item 联系我们
             a.list-group-item 友情链接
-        .col-md-8#about-content
+        .col-md-9#about-content
           .about-content.about-padding
             h1 关于我们
             dl.us-list
@@ -41,8 +41,8 @@ block content
                   .group-text-box.pull-left
                   img(src="img/about-content-group1.jpg" alt="about-content-group1")
                 li
-                  img(src="img/about-content-group2.jpg" alt="about-content-group2")
-                  .group-text-box.pull-right
+                  img.pull-left(src="img/about-content-group2.jpg" alt="about-content-group2")
+                  .group-text-box.pull-left
                 li
                   .group-text-box.pull-left
                   img(src="img/about-content-group3.jpg" alt="about-content-group3")
@@ -108,6 +108,5 @@ block content
                 a(href="https://pugjs.org/api/getting-started.html") Pug
               dd
                 a(href="www.nodejs.org") Nodejs
-        .col-md-1
   include ../includes/footer
   script(src="../js/about.js")

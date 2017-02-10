@@ -5,6 +5,7 @@ var User = mongoose.model('User');
 var Category = mongoose.model('Category');
 var Game = mongoose.model('Game');
 var Post = mongoose.model('Post');
+var _  = require('underscore');
 var fs = require('fs');
 var path = require('path');
 var check = require('../middlewares/check');
@@ -66,23 +67,40 @@ router.get('/games', checkLogin, isAdmin, function(req, res, next) {
 // GET /admin/category/create 进入分类录入页
 router.get('/category/create', checkLogin, isAdmin, function(req, res, next) {
 	res.render('admincategorycreate', {
-		title: '欢迎大大前来录入分类信息！'
+		title: '欢迎大大前来录入分类信息！',
+		category: {}
 	});
 });
 
 // POST /admin/category/create 分类录入
 router.post('/category/create', checkLogin, isAdmin, function(req, res, next) {
+	var id = req.fields.categoryId;
 	var categoryName = req.fields.categoryName;
 	var _category = {
 		name: categoryName
 	}
-	var category = new Category(_category);
+	console.log(id);
+	if(id) {
+		Category.findById(id, function(err, category) {
+			if(err) {console.log(err);}
 
-	category.save(function(err, category) {
-		if(err) {console.log(err);}
+			categoryLast = _.extend(category, _category);
 
-		res.redirect('/admin/categorylist');
-	});
+			categoryLast.save(function(err, category) {
+				if(err) {console.log(err);}
+
+				res.redirect('/admin/categorylist');
+			});
+		});
+	}else{
+		var category = new Category(_category);
+
+		category.save(function(err, category) {
+			if(err) {console.log(err);}
+
+			res.redirect('/admin/categorylist');
+		});
+	}	
 });
 
 // GET /admin/categorylist 进入分类列表页
@@ -105,6 +123,35 @@ router.get('/categorylist', checkLogin, isAdmin, function(req, res, next) {
 	});
 });
 
+// GET /admin/categoryupdate/:id 修改分类名称
+router.get('/categoryupdate/:id', checkLogin, isAdmin, function(req, res, next) {
+	var id = req.params.id;
+
+	if (id) {
+		Category.findById(id, function(err, category) {
+			res.render('admincategorycreate', {
+				title: '欢迎主人前来修改' + category.name,
+				category: category
+			});
+		});
+	}
+});
+
+// DELETE /admin/categorylist 分类删除交互
+router.delete('/categorylist', checkLogin, isAdmin, function(req, res, next) {
+	var id = req.query.id;
+	if(id) {
+		Category.remove({_id: id}, function(err, category) {
+			if(err) {
+				console.log(err);
+				res.json({success: 0});
+			}else{
+				res.json({success: 1});
+			}
+		});
+	}
+});
+
 // GET /admin/game/create 进入游戏录入页
 router.get('/game/create', checkLogin, isAdmin, function(req, res, next) {
 	Category.find({},function(err, categories){
@@ -118,6 +165,7 @@ router.get('/game/create', checkLogin, isAdmin, function(req, res, next) {
 
 // POST /admin/game/create 游戏录入
 router.post('/game/create', checkLogin, isAdmin, function(req, res, next) {
+	var gameId = req.fields.gameId;
 	var gamecategory = req.fields.gamecategory;
 	var gamename = req.fields.gamename;
 	if(req.files.uploadposter.name) {
@@ -170,29 +218,43 @@ router.post('/game/create', checkLogin, isAdmin, function(req, res, next) {
 		summary: gamesummary
 	}
 
-	Game.findOne({name: gamename}, function(err, game) {
-		if(err) {console.log(err);}
+	if(gameId) {
+		Game.findById(gameId, function(err, game) {
+			if(err) {console.log(err);}
 
-		if(game != null) {
-			req.flash('error', '已经录入过的游戏！');
-			return res.redirect('/admin/game/create');
-		}else{
-			game = new Game(_game);
-			game.save(function(err, game) {
+			gameLast = _.extend(game, _game);
+
+			gameLast.save(function(err, game) {
 				if(err) {console.log(err);}
 
-				if(categoryId) {
-					Category.findById(categoryId, function(err, category) {
-						category.games.push(game._id);
-
-						category.save(function(err, category) {
-							res.redirect('/admin/games');
-						});
-					});
-				}
+				res.redirect('/admin/gamelist');
 			});
-		}
-	});
+		});
+	}else{
+		Game.findOne({name: gamename}, function(err, game) {
+			if(err) {console.log(err);}
+
+			if(game != null) {
+				req.flash('error', '已经录入过的游戏！');
+				return res.redirect('/admin/game/create');
+			}else{
+				game = new Game(_game);
+				game.save(function(err, game) {
+					if(err) {console.log(err);}
+
+					if(categoryId) {
+						Category.findById(categoryId, function(err, category) {
+							category.games.push(game._id);
+
+							category.save(function(err, category) {
+								res.redirect('/admin/gamelist');
+							});
+						});
+					}
+				});
+			}
+		});
+	}
 });
 
 // GET /admin/gamelist 进入游戏列表页
@@ -215,10 +277,43 @@ router.get('/gamelist', checkLogin, isAdmin, function(req, res, next) {
 	});
 });
 
+// GET /admin/gameupdate/:id 修改游戏内容
+router.get('/gameupdate/:id', checkLogin, isAdmin, function(req, res, next) {
+	var id = req.params.id;
+
+	if(id) {
+		Game.findById(id, function(err, game) {
+			Category.find({},function(err, categories){
+				res.render('admingamecreate', {
+					title: '欢迎大大前来录入游戏信息！',
+					categories: categories,
+					game: game
+				});
+			});
+		});
+	}
+});
+
+// DELETE /admin/gamelist 游戏删除交互
+router.delete('/gamelist', checkLogin, isAdmin, function(req, res, next) {
+	
+	var id = req.query.id;
+	if(id) {
+		Game.remove({_id: id}, function(err, game) {
+			if(err) {
+				console.log(err);
+				res.json({success: 0});
+			}else{
+				res.json({success: 1});
+			}
+		});
+	}
+});
+
 // GET /admin/postlist 进入帖子列表页
 router.get('/postlist', checkLogin, isAdmin, function(req, res, next) {
 	var page = parseInt(req.query.p, 10) || 0;
-	var count = 6;
+	var count = 8;
 	var index = page * count;
 
 	Post
@@ -239,6 +334,21 @@ router.get('/postlist', checkLogin, isAdmin, function(req, res, next) {
 			posts: results
 		});
 	});
+});
+
+// DELETE /admin/postlist 帖子删除交互
+router.delete('/postlist', checkLogin, isAdmin, function(req, res, next) {
+	var id = req.query.id;
+	if(id) {
+		Post.remove({_id: id}, function(err, post) {
+			if(err) {
+				console.log(err);
+				res.json({success: 0});
+			}else{
+				res.json({success: 1});
+			}
+		});
+	}
 });
 
 module.exports = router;

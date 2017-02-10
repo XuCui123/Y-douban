@@ -11,6 +11,8 @@ block content
     .container
       .row
         form.form-horizontal(method="post", action="/admin/category/create")
+          if category._id
+            input(type="hidden", name="categoryId", value=category._id)
           .form-group
             label.col-sm-2.control-label(for="categoryname") 分类名称
             .col-sm-10

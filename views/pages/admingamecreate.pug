@@ -11,12 +11,15 @@ block content
     .container
       .row
         form.form-horizontal(method="post", action="/admin/game/create", enctype="multipart/form-data")
+          if game._id
+            input(type="hidden", name="gameId", value=game._id)
           .form-group
             label.col-sm-2.control-label 分类选择
             each category in categories
               label.radio-inline
                 if game.category
-                  input(type="radio", name="gamecategory", checked=category._id.toString()==game.category.toString())
+                  input(type="radio", name="gamecategory", checked=category._id.toString()==game.category.toString(), value=category._id)
+                  | #{category.name}
                 else
                   input(type="radio", name="gamecategory", value=category._id)
                   | #{category.name}

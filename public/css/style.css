@@ -20,7 +20,7 @@ body{padding-top: 50px;}
 .section-advertising{margin: 50px 0;}
 
 .about{padding: 20px 0;background-color: #ccc;}
-.about-content{border-radius: 4px;}
+.about-content{border-radius: 4px;overflow: hidden;}
 .about-padding{padding: 10px 40px 50px;background-color: #fff;}
 .about-content h1{font-size: 16px;line-height: 49px;color: #363d40;border-bottom: 1px solid #eceff0;}
 .us-list{padding-left: 20px;}
@@ -40,10 +40,12 @@ body{padding-top: 50px;}
 .about-height dd{float: left;width: 335px;margin: 10px 0;}
 #about-list a:hover{cursor: pointer;}
 .dropdown:hover{cursor: pointer;}
-.admin-box{background: url("../img/admin-background.jpg");height: 600px;}
-.error-box{width: 560px; height: 360px;background-color: #ccc;padding: 20px;position: absolute;left: 50%;top: 50%;margin-left: -300px;margin-top: -200px;border-radius: 20px;}
+.admin-box{background: url("../img/admin-background.jpg");height: 800px;}
+.game-box{background: url("../img/admin-background.jpg");height: 850px;}
+.error-box{width: 380px; height: 280px;background-color: #ccc;padding: 20px;position: absolute;left: 50%;top: 50%;margin-left: -190px;margin-top: -140px;border-radius: 20px;}
 #error-info{color: #f00;font-size: 22px;}
 .adminlist{margin-top: 50px;}
+.games-goback{padding-top: 30px;padding-left: 15px;}
 
 .user-info{background-color: #ccc;padding: 50px 0 350px 0;}
 .user-avatar-box{display: block;width: 200px;height: 200px;overflow: hidden;;}
@@ -57,7 +59,7 @@ body{padding-top: 50px;}
 .users-content-box{height: 345px;}
 .categories-content-box{height: 345px;}
 .games-content-box{height: 345px;}
-.posts-content-box{height: 345px;}
+.post-content-box{height: 345px;}
 .goback-padding-bottom{padding-bottom: 30px;}
 
 /* postdetail */
