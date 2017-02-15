@@ -98,25 +98,26 @@ router.get('/', checkLogin, function(req, res, next) {
 router.get('/:postId', checkLogin,function(req, res, next) {
 	var postId = req.params.postId;
 	var i = 1;
+
 	Post.update({_id: postId}, {$inc: {pv: 1}}, function(err) {
 		if(err) {console.log(err);}
 	});
 
-	Post.findOne({_id: postId})
-		.populate({path: 'author', model: 'User'})
-		.exec(function(err, post) {
-		  	Comment.find({postId: postId})
-		  		   .populate({path: 'replyer', model: 'User'})
-		  		   .exec(function(err, comments) {
-				  		res.render('postdetail', {
-					  		title: post.title,
-					  		post: post,
-					  		comments: comments,
-					  		i: i
-		  				});
-		  			});
+	Post.findById(postId, function(err, post) {
+		Comment
+			.find({postId: postId})
+			.populate({path: 'from', model: 'User'})
+			.populate('reply.from reply.to', 'nickname')
+			.exec(function(err, comments) {
+		  		res.render('postdetail', {
+			  		title: post.title,
+			  		post: post,
+			  		comments: comments,
+			  		i: i
+  				});
 			});
 	});
+});
 
 // GET /posts/:postId/edit 更新帖子页
 router.get('/:postId/edit', checkLogin, function(req, res, next) {
@@ -167,7 +168,9 @@ router.get('/:postId/remove', checkLogin, function(req, res, next) {
 router.post('/:postId/comment', checkLogin, function(req, res, next) {
 	var postId = req.params.postId;
 	var content = req.fields.content;
-	var replyer = req.session.user._id;
+	var from  = req.session.user._id;
+	var commentTid = req.fields.commentTid;
+	var commentCid = req.fields.commentCid;
 
 	// 校验参数
 	try{
@@ -182,16 +185,36 @@ router.post('/:postId/comment', checkLogin, function(req, res, next) {
 	var _comment = {
 		postId: postId,
 		content: content,
-		replyer: replyer
+		from: from,
+		commentCid: commentCid,
+		commentTid: commentTid
 	}
 
-	comment = new Comment(_comment);
-	comment.save(function(err, post) {
-		if(err) {console.log(err);}
+	if(commentCid) {
+		Comment.findById(commentCid, function(err, comment) {
+			var reply = {
+				from: from,
+				to: commentTid,
+				content: content
+			}
 
-		res.redirect('/posts/' + postId);
-	});
+			comment.reply.push(reply);
 
+			comment.save(function(err, comment) {
+				if(err) {console.log(err);}
+			});
+
+			res.redirect('/posts/' + postId);
+		});
+	}else{
+		comment = new Comment(_comment);
+		comment.save(function(err, comment) {
+			if(err) {console.log(err);}
+
+			res.redirect('/posts/' + postId);
+		});
+	}
+	
 });
 
 module.exports = router;

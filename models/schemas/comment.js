@@ -7,11 +7,26 @@ var CommentSchema = new Schema({
 		type: ObjectId,
 		ref: 'Post'
 	},
+	gameId: {
+		type: ObjectId,
+		ref: 'Game'
+	},
 	content: String,
-	replyer: {
+	from: {
 		type: ObjectId,
 		ref: 'User'
 	},
+	reply: [{
+		from: {
+			type: ObjectId,
+			ref: 'User'
+		},
+		to: {
+			type: ObjectId,
+			ref: 'User'
+		},
+		content: String
+	}],
 	meta: {
 	    createAt: {
 	      type: Date,

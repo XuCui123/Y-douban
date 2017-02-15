@@ -12,7 +12,7 @@ block content
         span.label.label-primary
           .glyphicon.glyphicon-comment
           a(href="#", data-toggle="modal", data-target="#replyModal") 回复
-        - if(user && post.author._id && user._id.toString() === post.author._id.toString()) {
+        - if(user && post.author && user._id.toString() === post.author.toString()) {
           span.label.label-primary
             .glyphicon.glyphicon-comment
             a(href="/posts/" + post._id + '/edit') 编辑
@@ -30,31 +30,36 @@ block content
          span.post-reply-tail 
            span 1楼
            span &nbsp;
-           span #{moment(post.meta.createAt).format('YYYY-MM-DD hh:mm a')}
+           span #{moment(post.meta.createAt).format('YYYY-MM-DD HH:mm')}
            span &nbsp;
-           a(href="#") 回复
+           a(href="#", data-toggle="modal", data-target="#replyModal") 回复
     hr.divider
     each comment in comments
       - i = i + 1;
       .post-content
         .col-md-2.post-avatar-wrap
-           img(src="../upload/" + comment.replyer.avatar)
-           p.post-content-nickname #{comment.replyer.nickname}
+           img(src="../upload/" + comment.from.avatar)
+           p.post-content-nickname #{comment.from.nickname}
         .col-md-10
            p #{comment.content}
            span.post-reply-tail 
              span #{i}楼
              span &nbsp;
-             span #{moment(comment.meta.createAt).format('YYYY-MM-DD hh:mm a')}
+             span #{moment(comment.meta.createAt).format('YYYY-MM-DD HH:mm')}
              span &nbsp;
-             a(href="#") 回复
+             a.comment(href="#replyModal", data-toggle="modal", data-target="#replyModal", data-cid=comment._id, data-tid=comment.from._id) 回复
+        .post-reply-reply
+          if comment.reply && comment.reply.length > 0
+            each reply in comment.reply
+              p #{reply.from.nickname} 回复了 #{reply.to.nickname} : #{reply.content}
+                a.comment(href="#replyModal", data-toggle="modal", data-target="#replyModal", data-cid=comment._id, data-tid=reply.from._id) 回复
       hr.divider
 
 
   #replyModal.modal.fade
     .modal-dialog
       .modal-content
-        form(method="POST", action="/posts/" + post._id + "/comment")
+        form#commentForm(method="POST", action="/posts/" + post._id + "/comment")
           .modal-header 回复
           .modal-body
             .form-group
@@ -63,4 +68,6 @@ block content
           .modal-footer
             button.btn.btn-default(type="button", data-dismiss="modal") 关闭
             button.btn.btn-success(type="submit") 提交
+  script(src="/js/detail.js")
+
 
