@@ -1,7 +1,7 @@
 extends ../layout
 
 block content
-  section
+  section.carousel-wrapper
     .carousel.slide#carousel-example-generic(data-ride="carousel")
       ol.carousel-indicators
         li.active(data-target="#carousel-example-generic", data-slide-to="0")
@@ -41,7 +41,7 @@ block content
       a.right.carousel-control(href="#carousel-example-generic", role="button", data-slide="next")
         span.glyphicon.glyphicon-chevron-right
         span.sr-only 下一页
-  section
+  section.panel-wrapper
     .container#index-panel
       .row
         .col-md-4
@@ -62,18 +62,17 @@ block content
           p 《饥荒》是由Klei Entertainment开发的一款动作冒险类求生游戏。
           p
             a.btn.btn-primary(href="http://www.ali213.net/zt/DonotStarve/", target="_blank") 相关资讯
-      hr.divider
-  section
+  section.nav-wrapper
     .container
       ul.nav.nav-tabs(role="tablist")
         li.active(role="presentation")
-          a(href="#recommend-1", role="tab", data-toggle="tab") 今日推荐一
+          a(href="#recommend-1", role="tab", data-toggle="tab") 推荐一
         li(role="presentation")
-          a(href="#recommend-2", role="tab", data-toggle="tab") 今日推荐二
+          a(href="#recommend-2", role="tab", data-toggle="tab") 推荐二
         li(role="presentation")
-          a(href="#recommend-3", role="tab", data-toggle="tab") 今日推荐三
+          a(href="#recommend-3", role="tab", data-toggle="tab") 推荐三
         li(role="presentation")
-          a(href="#recommend-4", role="tab", data-toggle="tab") 今日推荐四
+          a(href="#recommend-4", role="tab", data-toggle="tab") 推荐四
       .tab-content
         .tab-pane.active#recommend-1
           .row.feature
@@ -104,4 +103,3 @@ block content
               h3.feature-heading 我的世界
               p.lead 最后为大家推荐一款百玩不腻的单机游戏我的世界。《Minecraft》是由MojangAB和4JStudios开发的高自由度的沙盒游戏。本作以让每一个玩家在三维空间中自由地创造和破坏不同种类的方块为主体。玩家在游戏中可以在单人或多人模式中通过摧毁或创造方块以创造精妙绝伦的建筑物和艺术，或者收集物品探索地图以完成游戏的主线。
   include ../includes/footer
-

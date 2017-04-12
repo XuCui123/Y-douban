@@ -4,10 +4,19 @@ var mongoose = require('mongoose');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 var flash = require('connect-flash');
-var config = require('config-lite');
 var routes = require('./routes');
 var package = require('./package');
 var fs = require('fs');
+
+var config = {
+  port: 3000,
+	session: {
+		secret: 'ygames',
+		key: 'ygames',
+		maxAge: 2592000000
+	},
+	mongodb: 'mongodb://localhost:27017/ygames'
+}
 
 mongoose.connect(config.mongodb);
 
@@ -70,7 +79,7 @@ app.use(flash());
 
 // 处理表单及文件上传的中间件
 app.use(require('express-formidable')({
-  uploadDir: path.join(__dirname, 'public/upload'),// 上传文件目录
+  uploadDir: path.join(__dirname, './public/upload'),// 上传文件目录
   keepExtensions: true// 保留后缀
 }));
 

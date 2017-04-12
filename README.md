@@ -1,8 +1,8 @@
-## YGames
+## Y-Games
 
 ## 简介
 
-基于NodeJS+Express+MongoDB搭建的游戏推广网站(ps:其实是毕业设计用的)
+基于NodeJS+Express+MongoDB搭建的游戏推广网站
 
 ## 开发环境
 
@@ -31,7 +31,11 @@
   9. `mongoose`: mongodb 驱动
   10. `bcryptjs`: 用于密码加密
 
-**4. 功能介绍**
+**4. gulp自动化构建**
+
+  加入了gulp构建工具，更加灵活的对项目进行管理。
+
+**5. 功能介绍**
 
 网站用户分为游客，用户，管理员三种，每种用户拥有观看网站的不同权限。
 
@@ -69,15 +73,16 @@
 
 ## 运行环境
 
-Windows 7上运行正常，后续会测Ubuntu 16.04，比较穷Mac先不测了！
+Windows 7上运行正常，Ubuntu 16.04，Mac均能正常运行。
 
 ## 运行和使用
 
-1. 启动MongoDB服务(因为是在Windows 7，做了一个MongoDB的服务，net start MongoDB)。
+1. 启动MongoDB服务。
 2. npm install(安装依赖模块)。
-3. node app(打开cmd，进入项目目录，运行此命令)。
-4. 打开浏览器(默认在3000端口，输入http://localhost:3000)。
+3. bower install(安装依赖包)。
+4. gulp(打开cmd或者终端，进入项目目录，运行此命令)。
 5. 权限这块在项目里不能加，我是直接在数据库中修改用户的role值，大于10为管理员。
+
 
 ## 项目页面
 
@@ -114,14 +119,13 @@ Windows 7上运行正常，后续会测Ubuntu 16.04，比较穷Mac先不测了�
 ## 项目结构:
 
 ```
-├── config			  默认配置文件目录     
 ├── middlewares       中间件目录
 ├── models            模型目录
 │   ├──schemas        模式目录
 ├── node_modules      
 ├── public            静态文件目录
-│   ├── css           
-│   ├── fonts         bootstrap字体图标目录
+│   ├── lib                      
+│   ├── less          
 │   ├── img           
 │   ├── js            
 │   └── upload        上传图片存储目录
@@ -130,12 +134,15 @@ Windows 7上运行正常，后续会测Ubuntu 16.04，比较穷Mac先不测了�
 │   ├── includes             
 │   └── pages
 ├── app.js            项目入口文件
-├── package.json
+├── package.json      npm初始化文件
+├── .bowerrc			    设置bower默认安装路径  
+├── .gitignore	      git上传时忽略文件     
+├── bower.json			  bower初始化文件
+├── gulpfile.js			  gulp配置文件
+├── LICENSE			           
 └── README.md
 ```
 
 ## 写在后面:
 
-1. 第一次做一个还算完整的项目，还有很多欠缺的地方，希望大家帮忙指出。
-2. 没用bower，gulp，less等一些工具，没做自动化测试。
-3. 后续可能会再度完善一下。
+稍微对项目完善了一下，在后续可能就是重写了！
