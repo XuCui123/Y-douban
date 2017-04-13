@@ -16,17 +16,20 @@ gulp.task('less', () => {
     .pipe(gulp.dest(app.prdPath + 'css'))
 });
 
-gulp.task('font', () => {
-  gulp.src(app.srcPath + 'fonts/**.*')
-  .pipe(gulp.dest(app.devPath + 'fonts'))
-  .pipe(gulp.dest(app.prdPath + 'fonts'));
+gulp.task('js', () => {
+  gulp.src(app.srcPath + 'js/**/*.js')
+      .pipe($.concat('main.js'))
+      .pipe(gulp.dest(app.devPath + 'js'))
+      .pipe($.uglify())
+      .pipe(gulp.dest(app.prdPath + 'js'))
 });
 
 gulp.task('watch', () => {
   gulp.watch(app.srcPath + 'less/**/*.less', ['less']);
+  gulp.watch(app.srcPath + 'js/**/*.js', ['js']);
 })
 
-gulp.task('build', ['less', 'font','watch']);
+gulp.task('build', ['less', 'js', 'watch']);
 
 gulp.task('server', () => {
   $.nodemon({

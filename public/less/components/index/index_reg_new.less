@@ -1,0 +1,190 @@
+.index-reg-new {
+  margin-bottom: 25px;
+  background-image: url('../../../img/doubanapp_bg.png');
+  background-position: top right;
+  background-repeat: no-repeat;
+  background-color: #f1faf1;
+  .wrapper {
+    position: relative;
+    padding: 28px 0 4px;
+    overflow: visible;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 0;
+      background: url('../../../img/doubanapp.png') left top no-repeat;
+    }
+    &::after {
+      content: '\0020';
+      display: block;
+      clear: both;
+    }
+    .login, .app {
+      z-index: 2;
+    }
+    .login {
+      position: relative;
+      float: right;
+      width: 270px;
+      margin-bottom: 15px;
+      font-size: 0;
+      legend {
+        display: none;
+      }
+      .item, .item-submit {
+        vertical-align: top;
+        text-align: left;
+        font-size: 0;
+        letter-spacing: normal;
+        word-spacing: normal;
+      }
+      .item {
+        position: relative;
+        margin-bottom: 4px;
+        .inp {
+          width: 252px;
+          height: 30px;
+          line-height: 30px;
+          padding: 0 8px;
+          font-size: 12px;
+          border: 1px solid #DBE5D8;
+          border-radius: 2px;
+        }
+      }
+      .item.item-passwd {
+        position: relative;
+        width: 268px;
+        border: 1px solid #DBE5DB;
+        border-radius: 2px;
+        background: #fff;
+        input {
+          border: 0;
+          width: 220px;
+        }
+        .opt {
+          position: absolute;
+          top: 0;
+          right: 10px;
+          font-size: 12px;
+          line-height: 35px;
+          a {
+            color: #ccc;
+            &:hover {
+              color: #666;
+            }
+          }
+        }
+      }
+      .item-submit {
+        margin-top: 6px;
+        .bn-submit {
+          width: 89px;
+          height: 30px;
+          padding: 0 22px;
+          margin-right: 0;
+          font-size: 12px;
+          background-color: #30A080;
+          border: none;
+          border-radius: 2px;
+          color: #fff;
+          box-sizing: content-box;
+          vertical-align: top;
+          cursor: pointer;
+        }
+        .link-reg {
+          width: 89px;
+          padding: 8px 21px;
+          background: transparent;
+          border: 1px solid #30A080;
+          font-size: 12px;
+          line-height: 1;
+          color: #30A080;
+          margin-left: 4px;
+          text-align: center;
+          border-radius: 2px;
+          vertical-align: top;
+        }
+      }
+      .item-action {
+        font-size: 12px;
+        margin: 8px 0 0;
+        overflow: hidden;
+        color: #666;
+        input {
+          margin-right: 3px;
+          vertical-align: middle;
+        }
+        .item-action-third {
+          float: right;
+          font-size: 0;
+          margin-top: 3px;
+          margin-right: 4px;
+          a::before {
+            content: '';
+            display: inline-block;
+            width: 14px;
+            height: 12px;
+            background-repeat: no-repeat;
+            background-position: bottom;
+          }
+          .wechat::before {
+            background-image: url('../../../img/wechat.png');
+          }
+          .weibo::before {
+            background-image: url('../../../img/weibo.png');
+          }
+          li+li {
+            margin-left: 8px;
+          }
+        }
+      }
+
+    }
+    .app {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      height: 120px;
+      margin: auto 0 auto 430px;
+      .app-title {
+        margin: 7px 0;
+        font-size: 25px;
+        font-weight: bold;
+        line-height: 24px;
+        span {
+          margin-left: 10px;
+          font-weight: 100;
+        }
+      }
+      .app-slogan {
+        margin: 0 0 18px;
+        font-size: 0;
+        text-align: justify;
+        span { font-size: 12px; }
+      }
+      .link-app {
+        padding: 9px 21px;
+        font-size: 12px;
+        line-height: 1;
+        border-radius: 2px;
+        margin-right: 2px;
+        vertical-align: top;
+        background-color: #00b51d;
+        color: #fff;
+      }
+      .app-qr {
+        display: inline-block;
+        position: relative;
+        font-size: 0;
+        .link-qr {
+          border: 1px solid #48aa0d;
+          border-radius: 2px;
+        }
+      }
+    }
+  }
+}
