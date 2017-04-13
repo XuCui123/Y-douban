@@ -1,0 +1,73 @@
+.index-nav {
+  width: 950px;
+  margin: 0 auto 25px;
+  padding-top: 30px;
+  .index-nav-link {
+    float: right;
+    font-size: 21px;
+    margin-top: 2px;
+    li { margin-right: 15px; }
+    a { font-weight: 700; }
+    .link-book { color: @indexNavReadLogoColor; }
+    .link-movie { color: @indexNavMovieLogoColor; }
+    .link-music { color: @indexNavMusicLogoColor; }
+    .link-group { color: @indexNavGroupLogoColor; }
+    .link-events { color: @indexNavEventsLogoColor; }
+    .link-fm { color: @indexNavFmLogoColor; }
+    .link-something { color: @indexNavSomethingLogoColor; }
+    .link-market { color: @indexNavMarketLogoColor; }
+  }
+  .index-logo, .index-nav-search {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .index-logo {
+    position: relative;
+    width: 160px;
+    a {
+      color: @doubanGreenColor;
+      font-size: 28px;
+      .logo-chinese {
+        position: absolute;
+        top: -10px;
+      }
+      .logo-english {
+        position: absolute;
+        bottom: -5px;
+        left: 60px;
+        font-weight: 200;
+        i { font-style: normal; }
+      }
+      .blue { color: @doubanBlueColor; }
+      .yellow { color: @doubanYellowColor; }
+    }
+  }
+  .index-nav-search {
+    width: 270px;
+    height: 30px;
+    border: 1px solid #c3c3c3;
+    font-size: 0;
+    margin-left: 10px;
+    .inp input {
+      width: 230px;
+      border: none;
+      font-size: 13px;
+      padding: 5px;
+      height: 20px;
+      vertical-align: top;
+    }
+    .btn button {
+      width: 30px;
+      height: 30px;
+      border: none;
+      vertical-align: top;
+      cursor: pointer;
+      background-color: transparent;
+      color: #ccc;
+      span {
+        font-size: 14px;
+        line-height: 30px;
+      }
+    }
+  }
+}
