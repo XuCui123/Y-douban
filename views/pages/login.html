@@ -1,0 +1,54 @@
+{% extends '../layout.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+  <div class="wrapper">
+    {% include '../components/user/header.html' %}
+    <div class="user-content clearfix">
+      <h1>登录豆瓣</h1>
+      <div class="login">
+        <div class="item-error">
+          <p class="error">账号不能为空</p>
+        </div>
+        <div class="item-right">
+          <a href="">手机验证码登录</a>
+        </div>
+        <div class="item">
+          <label>帐号</label>
+          <input type="text" class="basic-input" placeholder="邮箱/手机号/用户名">
+        </div>
+        <div class="item">
+          <label>密码</label>
+          <input type="password" name="" value="" class="basic-input">
+        </div>
+        <div class="item">
+          <label>&nbsp;</label>
+          <p class="remember">
+            <input type="checkbox" id="remeber">
+            <label for="remeber" class="remember">下次自动登录</label>|
+            <a href="">忘记密码了</a>
+          </p>
+        </div>
+        <div class="item">
+          <label>&nbsp;</label>
+          <button type="submit" class="btn-submit">登录</button>
+        </div>
+        <div class="item item-3rd">
+          <label>第三方登录：</label>
+          <a href="">
+            <img src="img/wechat_1.png" alt="微信登录">
+          </a>
+          <a href="">
+            <img src="img/weibo_1.png" alt="微博登录">
+          </a>
+        </div>
+      </div>
+      <ul class="aside">
+        <li>> 还没有豆瓣帐号？<a href="/register">立即注册</a></li>
+        <li>> <a href="">点击下载豆瓣移动应用</a></li>
+      </ul>
+    </div>
+    {% include '../components/user/footer.html' %}
+  </div>
+{% endblock %}

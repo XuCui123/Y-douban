@@ -8,12 +8,12 @@ var app = {
   prdPath: 'public/dist/'
 }
 
-gulp.task('less', () => {
-  gulp.src(app.srcPath + 'less/main.less')
-    .pipe($.less())
-    .pipe(gulp.dest(app.devPath + 'css'))
-    .pipe($.cssmin())
-    .pipe(gulp.dest(app.prdPath + 'css'))
+gulp.task('css', () => {
+  gulp.src(app.srcPath + 'stylus/main.styl')
+      .pipe($.stylus())
+      .pipe(gulp.dest(app.devPath + 'css'))
+      .pipe($.cssmin())
+      .pipe(gulp.dest(app.prdPath + 'css'))
 });
 
 gulp.task('js', () => {
@@ -25,11 +25,11 @@ gulp.task('js', () => {
 });
 
 gulp.task('watch', () => {
-  gulp.watch(app.srcPath + 'less/**/*.less', ['less']);
+  gulp.watch(app.srcPath + 'stylus/**/*.styl', ['css']);
   gulp.watch(app.srcPath + 'js/**/*.js', ['js']);
 })
 
-gulp.task('build', ['less', 'js', 'watch']);
+gulp.task('build', ['css', 'js', 'watch']);
 
 gulp.task('server', () => {
   $.nodemon({

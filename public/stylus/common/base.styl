@@ -1,0 +1,71 @@
+body,div,
+dl,dt,dd,
+ul,ol,li,
+h1,h2,h3,h4,h5,h6,
+pre,code,
+form,fieldset,legend,input,button,textarea,
+blockquote
+  margin: 0
+  padding: 0
+
+html
+  color: $global-font-color
+  background: $global-bg-color
+
+body
+  display: block
+  font-family: $font-family-base
+  font-size: $font-size-base
+  line-height: $global-line-height
+
+h1
+  display: block
+  margin: 0
+  padding: 0 0 15px 0
+  font-size: 25px
+  font-weight: bold
+  color: #494949
+  line-height: 1.1
+
+ul, ol
+  list-style: none
+
+li
+  display: inline-block
+
+a
+  color: $global-link-color
+  text-decoration: none
+  word-wrap: break-word
+  &:hover
+    color: $global-link-hover-color
+
+input
+  margin-right: 3px
+  vertical-align: middle
+  outline: none
+
+fieldset
+  border: none
+
+label
+  font-family: Tahoma
+  vertical-align: middle
+
+.clearfix
+  &:before,
+  &:after
+    content: ''
+    display: table
+  &:after
+    clear: both
+
+.wrapper
+  width: 950px
+  margin: 0 auto
+
+.f-left
+  float: left
+
+.f-right
+  float: right
