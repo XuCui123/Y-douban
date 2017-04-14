@@ -1,0 +1,19 @@
+{
+  "name": "y-douban",
+  "description": "Haha,such a cool website",
+  "main": "app.js",
+  "authors": [
+    "yudaren007007"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "douban",
+    "node.js",
+    "express",
+    "mongodb"
+  ],
+  "homepage": "https://github.com/yudaren007007/Y-douban",
+  "dependencies": {
+    "jquery": "^3.2.1"
+  }
+}

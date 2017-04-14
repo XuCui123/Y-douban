@@ -11,15 +11,15 @@
       <form class="register-form" action="" method="post">
         <div class="item">
           <label>邮箱</label>
-          <input type="text" class="basic-input" id="email" maxlength="60" tabindex="1">
+          <input type="text" name="email" class="basic-input" id="email" maxlength="60" tabindex="1">
         </div>
         <div class="item">
           <label>密码</label>
-          <input type="password" class="basic-input" id="password" maxlength="20" tabindex="2">
+          <input type="password" name="password" class="basic-input" id="password" maxlength="20" tabindex="2">
         </div>
         <div class="item">
           <label>名号</label>
-          <input type="text" class="basic-input" id="name" maxlength="15" tabindex="3">
+          <input type="text" name="nickname" class="basic-input" id="nickname" maxlength="15" tabindex="3">
         </div>
         <div class="suggestion">
           <span class="tips">第一印象很重要，起个响亮的名号吧</span>
@@ -28,9 +28,10 @@
           <label>常居地</label>
           <span class="loc">
             <em class="location">
-              豆瓣猜你在<strong>哈尔滨</strong>，没猜对？
+              豆瓣猜你在<strong>成都</strong>，没猜对？
             </em>
-            <a href="">手动选择</a>
+            <a href="#">手动选择</a>
+            <input type="hidden" name="address" value="118318">
           </span>
         </div>
         <div class="item">
@@ -38,7 +39,7 @@
           <div class="phone-input">
             <span>+86</span>
             <div>
-              <input type="text">
+              <input type="text" name="phone">
             </div>
           </div>
         </div>
@@ -68,7 +69,10 @@
         </div>
       </form>
     </div>
-    {% include '../components/user/aside.html' %}
+    <ul class="aside">
+      <li>> 已经拥有豆瓣帐号？<a href="/login">直接登录</a></li>
+      <li>> <a href="">点击下载豆瓣移动应用</a></li>
+    </ul>
   </div>
   {% include '../components/user/footer.html' %}
 </div>

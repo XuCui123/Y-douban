@@ -21,9 +21,9 @@
       content: '\0020'
       display: block
       clear: both
-    .login,.app
+    .index-login,.index-app
       z-index: 2
-    .login
+    .index-login
       position: relative
       float: right
       width: 270px
@@ -115,12 +115,12 @@
             background-repeat: no-repeat
             background-position: bottom
           .wechat::before
-            background-image: url('../../../img/wechat.png')
+            background-image: url('../../../img/icon/wechat.png')
           .weibo::before
-            background-image: url('../../../img/weibo.png')
+            background-image: url('../../../img/icon/weibo.png')
           li+li
             margin-left: 8px
-    .app
+    .index-app
       position: absolute
       top: 0
       bottom: 0
@@ -162,3 +162,20 @@
           display: inline-block
           border: 1px solid #48aa0d
           border-radius: 2px
+        .app-qr-expand
+          display: none
+          position: absolute
+          top: 0
+          left: 0
+          padding: 10px 10px 5px
+          border: 1px solid #4a480d
+          border-radius: 2px
+          text-align: center
+          font-size: 13px
+          color: #666
+          background-color: #fff
+          line-height: 13px
+          white-space: nowrap
+        &.open
+          .app-qr-expand
+            display: block

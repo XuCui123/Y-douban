@@ -1,6 +1,6 @@
 <div class="index-reg-new">
   <div class="wrapper">
-    <div class="login">
+    <div class="index-login">
       <form action="">
         <fieldset>
           <legend>登录</legend>
@@ -19,8 +19,8 @@
             <a href="/register" class="link-reg">注册账号</a>
           </div>
           <div class="item item-action">
-            <label for="form_remeber">
-              <input type="checkbox" id="form_remeber">
+            <label for="form_remember">
+              <input type="checkbox" id="form_remember">
               记住我
             </label>
             <ul class="item-action-third">
@@ -31,7 +31,7 @@
         </fieldset>
       </form>
     </div>
-    <div class="app">
+    <div class="index-app">
       <p class="app-title">
         豆瓣<span>4.0</span>
       </p>
@@ -39,10 +39,14 @@
         <span>我们的精神角落</span>
       </p>
       <a href="" class="link-app">下载豆瓣 App</a>
-      <div class="app-qr">
-        <a href="" class="link-qr">
-          <img src="https://img3.doubanio.com/f/sns/0c708de69ce692883c1310053c5748c538938cb0/pics/sns/anony_home/icon_qrcode_green.png" width="28" height="28" alt="">
+      <div class="app-qr" id="expand-qr">
+        <a href="javascript:void()" class="link-qr">
+          <img src="img/icon/icon_qrcode.png" width="28" height="28" alt="">
         </a>
+        <div class="app-qr-expand">
+          <img src="img/qrcode.jpg" width="160" height="160" alt="二维码">
+          <p>偷偷关注我一下！</p>
+        </div>
       </div>
     </div>
   </div>

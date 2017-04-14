@@ -4,32 +4,37 @@ var browserSync = require('browser-sync').create();
 
 var app = {
   srcPath: 'public/',
-  devPath: 'public/build/',
   prdPath: 'public/dist/'
 }
 
 gulp.task('css', () => {
   gulp.src(app.srcPath + 'stylus/main.styl')
-      .pipe($.stylus())
-      .pipe(gulp.dest(app.devPath + 'css'))
-      .pipe($.cssmin())
+      .pipe($.stylus({
+        compress: true
+      }))
       .pipe(gulp.dest(app.prdPath + 'css'))
 });
 
 gulp.task('js', () => {
   gulp.src(app.srcPath + 'js/**/*.js')
       .pipe($.concat('main.js'))
-      .pipe(gulp.dest(app.devPath + 'js'))
       .pipe($.uglify())
       .pipe(gulp.dest(app.prdPath + 'js'))
+});
+
+gulp.task('img', () => {
+  gulp.src(app.srcPath + 'img/**/*')
+      .pipe($.imagemin())
+      .pipe(gulp.dest(app.prdPath + 'img'))
 });
 
 gulp.task('watch', () => {
   gulp.watch(app.srcPath + 'stylus/**/*.styl', ['css']);
   gulp.watch(app.srcPath + 'js/**/*.js', ['js']);
+  gulp.watch(app.srcPath + 'img/**/*', ['img']);
 })
 
-gulp.task('build', ['css', 'js', 'watch']);
+gulp.task('production', ['clean', 'css', 'js', 'img', 'watch']);
 
 gulp.task('server', () => {
   $.nodemon({
@@ -42,7 +47,6 @@ gulp.task('server', () => {
   }).on('start', () => {
     browserSync.init({
       proxy: 'http://localhost:3000',
-      // files: ["public/**/*.*", "views/**","routes/**"],
       port: 3001
     }, () => {
       console.log('browserSync refreshed.');
@@ -54,9 +58,9 @@ gulp.task('server', () => {
 
 });
 
-gulp.task('default', ['clean', 'build', 'server']);
+gulp.task('default', ['production', 'server']);
 
 gulp.task('clean', () => {
-  gulp.src([app.devPath, app.prdPath])
+  gulp.src(app.prdPath)
       .pipe($.clean());
 });
