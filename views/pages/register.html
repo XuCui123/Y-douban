@@ -8,18 +8,23 @@
   <div class="user-content clearfix">
     <h1>欢迎加入豆瓣</h1>
     <div class="register">
-      <form class="register-form" action="" method="post">
-        <div class="item">
+      <form class="register-form" method="post">
+        <div class="item extra-tips">
           <label>邮箱</label>
-          <input type="text" name="email" class="basic-input" id="email" maxlength="60" tabindex="1">
+          <input type="text" name="email" class="basic-input" id="email" maxlength="60" tabindex="1" autofocus="">
+          <span class="validate-error" style="display: none">请输入正确格式的邮箱!</span>
         </div>
-        <div class="item">
+        <div class="item extra-tips has-error">
           <label>密码</label>
-          <input type="password" name="password" class="basic-input" id="password" maxlength="20" tabindex="2">
+          <input type="password" name="password" class="basic-input" id="password" maxlength="20" tabindex="1">
+          <span class="validate-option" style="display: none">至少包含字母和数字，最短8个字符，区分大小写</span>
+          <span class="validate-error" style="display: none"></span>
         </div>
-        <div class="item">
+        <div class="item extra-tips has-error">
           <label>名号</label>
-          <input type="text" name="nickname" class="basic-input" id="nickname" maxlength="15" tabindex="3">
+          <input type="text" name="nickname" class="basic-input" id="nickname" maxlength="15" tabindex="1">
+          <span class="validate-option" style="display: none">中、英文均可，最长14个英文或7个汉字</span>
+          <span class="validate-error" style="display: none"></span>
         </div>
         <div class="suggestion">
           <span class="tips">第一印象很重要，起个响亮的名号吧</span>
@@ -30,16 +35,18 @@
             <em class="location">
               豆瓣猜你在<strong>成都</strong>，没猜对？
             </em>
-            <a href="#">手动选择</a>
+            <a href="#" id="edloc">手动选择</a>
             <input type="hidden" name="address" value="118318">
           </span>
         </div>
         <div class="item">
           <label>手机号</label>
           <div class="phone-input">
-            <span>+86</span>
+            <span class="js-choose-district">+86</span>
             <div>
-              <input type="text" name="phone">
+              <input type="text" id="phone_num" name="phone_num" >
+              <input type="hidden" name="phone" value="+86" id="phone">
+              <span class="phone-error">请输入正确的手机号</span>
             </div>
           </div>
         </div>
@@ -50,16 +57,21 @@
         </div>
         <div class="item catcha-item">
           <label>验证码</label>
-          <input type="text" id="code" class="basic-input" maxlength="10" tabindex="2">
-          <button type="submit" class="phone-code-btn">获取验证码</button>
+          <input type="text" id="code" name="code" class="basic-input" maxlength="10" tabindex="2">
+          <button type="button" class="phone-code-btn">获取验证码</button>
+          <span class="phone-code-right">请输入验证码：<span class="code"></span></span>
+          <span class="phone-code-error">验证码不正确，请重新获取</span>
         </div>
         <div class="item-error">
+          {% if error %}
+            {{ error }}
+          {% endif %}
         </div>
         <div class="item">
           <p class="agreement">
             <label for="agreement" class="agreement-label">
-              <input type="checkbox" id="agreenment">
-              我已经认真的阅读并同意豆瓣的《<a href="">使用协议</a>》。
+              <input type="checkbox" id="agreement">
+              我已经认真的阅读并同意豆瓣的《<a href="javascript: void(0)">使用协议</a>》。
             </label>
           </p>
         </div>
@@ -75,5 +87,194 @@
     </ul>
   </div>
   {% include '../components/user/footer.html' %}
+</div>
+
+<div class="dui-dialog-mask"></div>
+<div id="dui-dialog0" class="dui-dialog">
+  <span class="dui-dialog-shd"></span>
+  <div class="dui-dialog-content">
+    <a href="javascript: void(0)" class="dui-dialog-close">X</a>
+    <div class="hd">
+      <h3>选择国际区号</h3>
+    </div>
+    <div class="bd">
+      <ul class="phone-list">
+        <li class="is-active">
+          <span class="item-district">
+            <span class="flag cn"></span>&nbsp;中国
+          </span>
+          <span class="item-number">+86</span>
+        </li>
+        <li>
+          <span class="item-district">
+            <span class="flag hk"></span>&nbsp;香港地区
+          </span>
+          <span class="item-number">+852</span>
+        </li>
+        <li>
+          <span class="item-district">
+            <span class="flag mo"></span>&nbsp;澳门
+          </span>
+          <span class="item-number">+853</span>
+        </li>
+        <li>
+          <span class="item-district">
+            <span class="flag tw"></span>&nbsp;台湾地区
+          </span>
+          <span class="item-number">+886</span>
+        </li>
+        <li>
+          <span class="item-district">
+            <span class="flag jp"></span>&nbsp;日本
+          </span>
+          <span class="item-number">+81</span>
+        </li>
+        <li>
+          <span class="item-district">
+            <span class="flag kr"></span>&nbsp;韩国
+          </span>
+          <span class="item-number">+82</span>
+        </li>
+        <li>
+          <span class="item-district">
+            <span class="flag sg"></span>&nbsp;新加坡
+          </span>
+          <span class="item-number">+65</span>
+        </li>
+        <li>
+          <span class="item-district">
+            <span class="flag th"></span>&nbsp;泰国
+          </span>
+          <span class="item-number">+66</span>
+        </li>
+        <li>
+          <span class="item-district">
+            <span class="flag my"></span>&nbsp;马来西亚
+          </span>
+          <span class="item-number">+60</span>
+        </li>
+        <li>
+          <span class="item-district">
+            <span class="flag us"></span>&nbsp;美国
+          </span>
+          <span class="item-number">+1</span>
+        </li>
+        <li>
+          <span class="item-district">
+            <span class="flag ca"></span>&nbsp;加拿大
+          </span>
+          <span class="item-number">+1</span>
+        </li>
+        <li>
+          <span class="item-district">
+            <span class="flag au"></span>&nbsp;澳大利亚
+          </span>
+          <span class="item-number">+61</span>
+        </li>
+        <li>
+          <span class="item-district">
+            <span class="flag gb"></span>&nbsp;英国
+          </span>
+          <span class="item-number">+44</span>
+        </li>
+        <li>
+          <span class="item-district">
+            <span class="flag de"></span>&nbsp;德国
+          </span>
+          <span class="item-number">+49</span>
+        </li>
+        <li>
+          <span class="item-district">
+            <span class="flag fr"></span>&nbsp;法国
+          </span>
+          <span class="item-number">+33</span>
+        </li>
+        <li>
+          <span class="item-district">
+            <span class="flag ru"></span>&nbsp;俄罗斯
+          </span>
+          <span class="item-number">+7</span>
+        </li>
+        <li>
+          <span class="item-district">
+            <span class="flag in"></span>&nbsp;印度
+          </span>
+          <span class="item-number">+91</span>
+        </li>
+        <li>
+          <span class="item-district">
+            <span class="flag nz"></span>&nbsp;新西兰
+          </span>
+          <span class="item-number">+64</span>
+        </li>
+        <li>
+          <span class="item-district">
+            <span class="flag it"></span>&nbsp;意大利
+          </span>
+          <span class="item-number">+39</span>
+        </li>
+        <li>
+          <span class="item-district">
+            <span class="flag nl"></span>&nbsp;荷兰
+          </span>
+          <span class="item-number">+31</span>
+        </li>
+        <li>
+          <span class="item-district">
+            <span class="flag es"></span>&nbsp;西班牙
+          </span>
+          <span class="item-number">+34</span>
+        </li>
+        <li>
+          <span class="item-district">
+            <span class="flag se"></span>&nbsp;瑞典
+          </span>
+          <span class="item-number">+46</span>
+        </li>
+        <li>
+          <span class="item-district">
+            <span class="flag at"></span>&nbsp;奥地利
+          </span>
+          <span class="item-number">+43</span>
+        </li>
+        <li>
+          <span class="item-district">
+            <span class="flag ch"></span>&nbsp;瑞士
+          </span>
+          <span class="item-number">+41</span>
+        </li>
+        <li>
+          <span class="item-district">
+            <span class="flag lt"></span>&nbsp;立陶宛
+          </span>
+          <span class="item-number">+370</span>
+        </li>
+        <li>
+          <span class="item-district">
+            <span class="flag ph"></span>&nbsp;菲律宾
+          </span>
+          <span class="item-number">+63</span>
+        </li>
+        <li>
+          <span class="item-district">
+            <span class="flag id"></span>&nbsp;印度尼西亚
+          </span>
+          <span class="item-number">+62</span>
+        </li>
+        <li>
+          <span class="item-district">
+            <span class="flag vn"></span>&nbsp;越南
+          </span>
+          <span class="item-number">+84</span>
+        </li>
+        <li>
+          <span class="item-district">
+            <span class="flag ae"></span>&nbsp;阿联酋
+          </span>
+          <span class="item-number">+971</span>
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>
 {% endblock %}

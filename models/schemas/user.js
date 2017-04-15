@@ -14,7 +14,10 @@ var UserSchema = new Schema({
     type: String
   },
   address: String,
-  phone: Number,
+  phone: {
+    uniqe: true,
+    type: Number
+  },
   role: {
     type: Number,
     default: 0
