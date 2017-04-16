@@ -35,8 +35,8 @@
             <em class="location">
               豆瓣猜你在<strong>成都</strong>，没猜对？
             </em>
-            <a href="#" id="edloc">手动选择</a>
-            <input type="hidden" name="address" value="118318">
+            <a href="javascript:void(0)" class="js-choose-location">手动选择</a>
+            <input type="hidden" name="address" value="成都" id="address">
           </span>
         </div>
         <div class="item">
@@ -90,7 +90,7 @@
 </div>
 
 <div class="dui-dialog-mask"></div>
-<div id="dui-dialog0" class="dui-dialog">
+<div id="dui-dialog0" class="dui-dialog" style="width: 340px; top: 32px; left: 504px">
   <span class="dui-dialog-shd"></span>
   <div class="dui-dialog-content">
     <a href="javascript: void(0)" class="dui-dialog-close">X</a>
@@ -277,4 +277,61 @@
     </div>
   </div>
 </div>
+<div id="dui-dialog1" class="dui-dialog" style="width: 560px; top: 99px; left: 394px">
+  <span class="dui-dialog-shd"></span>
+  <div class="dui-dialog-content">
+    <a href="javascript: void(0)" class="dui-dialog-close">X</a>
+    <div class="hd">
+      <h3>选择你的常居地</h3>
+    </div>
+    <div class="bd" style="height: auto;overflow: visible;">
+      <ul id="l_tabs">
+        <li class="selected">
+          <a href="javascript:void(0)" id="a_directly" class="loc-type">直达链接</a>
+        </li>
+        <li>
+          <a href="javascript:void(0)" id="a_china" class="loc-type">中国大陆</a>
+        </li>
+        <li>
+          <a href="javascript:void(0)" id="a_zone" class="loc-type">国家和地区</a>
+        </li>
+      </ul>
+      <div id="p_directly">
+        <div class="panel">
+          <ul>
+            <li><a href="javascript:void(0)" class="habitable">北京</a></li>
+            <li><a href="javascript:void(0)" class="habitable">上海</a></li>
+            <li><a href="javascript:void(0)" class="habitable">广州</a></li>
+            <li><a href="javascript:void(0)" class="habitable">深圳</a></li>
+            <li><a href="javascript:void(0)" class="habitable">成都</a></li>
+            <li><a href="javascript:void(0)" class="habitable">武汉</a></li>
+            <li><a href="javascript:void(0)" class="habitable">杭州</a></li>
+            <li><a href="javascript:void(0)" class="habitable">重庆</a></li>
+            <li><a href="javascript:void(0)" class="habitable">郑州</a></li>
+            <li><a href="javascript:void(0)" class="habitable">南京</a></li>
+            <li><a href="javascript:void(0)" class="habitable">西安</a></li>
+            <li><a href="javascript:void(0)" class="habitable">苏州</a></li>
+            <li><a href="javascript:void(0)" class="habitable">天津</a></li>
+            <li><a href="javascript:void(0)" class="habitable">长沙</a></li>
+            <li><a href="javascript:void(0)" class="habitable">福州</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="p_china" style="display: none;">
+        <div class="panel">
+          <ul>
+            暂时不支持哦
+          </ul>
+        </div>
+      </div>
+      <div id="p_zone" style="display: none">
+        <div class="panel">
+          <ul>暂时不支持哦</ul>
+        </div>
+      </div>
+      <p class="loading" style="display: none">正在加载数据，请稍后...</p>
+    </div>
+  </div>
+</div>
+<script src="dist/js/register.js" charset="utf-8"></script>
 {% endblock %}

@@ -41,8 +41,18 @@ UserSchema.pre('save', function (next) {
       next();
     });
   });
-
 });
+
+// 密码比较
+UserSchema.methods = {
+  comparePassword: function (_password, callback) {
+    bcrypt.compare(_password, this.password, function (err, isMatch) {
+      if (err) return callback(err);
+
+      callback(null, isMatch);
+    });
+  }
+}
 
 UserSchema.statics = {
   fetch: (callback) => {

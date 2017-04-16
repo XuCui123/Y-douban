@@ -1,0 +1,135 @@
+.global-nav
+  min-width: 950px
+  height: 28px
+  color: #d5d5d5
+  background-color: #545652
+  a
+    color: #d5d5d5
+  .top-nav-info
+    float: right
+    margin: 0 12px 0 0
+    line-height: 28px
+    .top-nav-doumail-link,.btn-more
+      margin: 0
+      height: 28px
+      padding: 0 12px
+    .arrow
+      position: relative
+      top: -2px
+      left: 2px
+      border-width: 3px 3px 0
+      border-color: #d5d5d5 transparent transparent transparent
+      border-style: solid dashed dashed dashed
+      width: 0
+      height: 0
+      font-size: 0
+      line-height: 0
+    .nav-user-account
+      position: relative
+      .more-items
+        display: none
+        position: absolute
+        top: 28px
+        left: 50%
+        margin-left: -45px
+        padding: 10px 0
+        border: 1px solid #e6e6e6
+        background-color: #fff
+        white-space: nowrap
+        li
+          display: block
+          padding: 0 20px
+          text-align: center
+          a
+            color: #111
+    .nav-user-account.more-active
+      .more-items
+        display: block
+  .top-nav-reminder
+    position: relative
+    float: right
+    margin-right: 5px
+    line-height: 28px
+    .link-remind
+      height: 28px
+      padding: 0 12px
+    .more-items
+      display: none
+      position: absolute
+      z-index: 999
+      padding: 0
+      width: 280px
+      left: -125px
+      top: 28px
+      border: 1px solid #e6e6e6
+      background-color: #fff
+      white-space: normal
+      word-wrap: break-word
+      .bd
+        padding-top: 16px
+        color: #3e3e3e
+        line-height: 1.5
+        p
+          padding: 0 15px 13px 15px
+          border-bottom: 1px solid #f0f0f0
+          margin: 0
+          color: #999
+    &.more-active
+      .more-items
+        display: block
+  .top-nav-doubanapp
+    position: relative
+    float: right
+    margin-right: 5px
+    line-height: 28px
+    .link-doubanapp
+      display: inline-block
+    .more-items
+      display: none
+      position: absolute
+      padding: 10px 20px 30px
+      width: 211px
+      left: -76px
+      color: #111
+      font-size: 15px
+      line-height: 1.6
+      font-weight: bold
+      text-align: center
+      border: 1px solid #c9c9c9
+      .appintro-title
+        padding-top: 170px
+        margin-top: 0
+        margin-bottom: 0
+        font-size: 24px
+        font-weight: 400
+        background: url('../../../img/nav_doubanapp_6.png') no-repeat center
+      .slogan
+        margin: 0
+        font-size: 13px
+        letter-spacing: 3px
+        font-weight: 400
+      .qrcode
+        padding-top: 160px
+        margin-top: 30px
+        font-size: 0
+        background: url('../../../img/qrcode.jpg') no-repeat center
+        background-size: 80% 100%
+      .download
+        margin-top: 10px
+        a
+          color: #37a
+          font-weight: normal
+          font-size: 12px
+    &.more-active
+      .more-items
+        display: block
+  .global-nav-items
+    font-size: 0
+    li
+      line-height: 28px
+      font-size: 12px
+      vertical-align: baseline
+    a
+      display: inline-block
+      padding: 0 12px
+      height: 28px

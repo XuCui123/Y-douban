@@ -4,22 +4,35 @@
   // 区号弹出层，地区弹出层
   var chooseDistrict = $('.js-choose-district');
   var districtDialog = $('#dui-dialog0');
-  var closeDistrict = $('.dui-dialog-close');
+  var chooseLocation = $('.js-choose-location');
+  var locationDialog = $('#dui-dialog1');
+  var closeDialog = $('.dui-dialog-close');
   var dialogMask = $('.dui-dialog-mask');
   var maskHeight = $(document.body).height();
   var phoneList = $('.phone-list');
+  var locationList = $('#l_tabs');
 
+  // 区号选择弹出层控制
   chooseDistrict.on('click', function () {
     districtDialog.show();
     dialogMask.css("height", maskHeight);
     dialogMask.show();
   });
 
-  closeDistrict.on('click', function () {
+  closeDialog.on('click', function () {
+    locationDialog.hide();
     districtDialog.hide();
     dialogMask.hide();
   });
 
+  // 地区选择弹出层控制
+  chooseLocation.on('click', function () {
+    locationDialog.show();
+    dialogMask.css("height", maskHeight);
+    dialogMask.show();
+  });
+
+  // 区号选择之后处理
   phoneList.on('click', function (event) {
     var phone;
     var list = phoneList.children('li');
@@ -29,7 +42,7 @@
     }
 
     if (event.target.nodeName === 'LI') {
-      phone = event.target
+      phone = event.target;
     } else {
       phone = $(event.target).parents('li')[0];
     }
@@ -40,6 +53,50 @@
 
     districtDialog.hide();
     dialogMask.hide();
+  });
+
+  // 地区列表的切换
+  locationList.on('click', function (event) {
+    var location = $(event.target);
+    var list = locationList.children('li');
+    var p_directly = $('#p_directly');
+    var p_china = $('#p_china');
+    var p_zone = $('#p_zone');
+
+    for (var i = 0; i < list.length; i++) {
+      $(list[i]).removeClass('selected');
+    }
+
+    if (location.attr('id') === 'a_china') {
+      location.parent().addClass('selected');
+      p_directly.hide();
+      p_zone.hide();
+      p_china.show();
+    } else if (location.attr('id') === 'a_zone') {
+      location.parent().addClass('selected');
+      p_directly.hide();
+      p_zone.show();
+      p_china.hide();
+    } else if (location.attr('id') === 'a_directly') {
+      location.parent().addClass('selected');
+      p_directly.show();
+      p_zone.hide();
+      p_china.hide();
+    }
+  });
+
+  // 城市选择
+  var panelCity = $('.panel');
+  panelCity.on('click', function (event) {
+    var city = $(event.target);
+    if (city.attr('class') === 'habitable') {
+      var cityName = city.html();
+      $('.loc .location').html(cityName);
+      $('.js-choose-location').html('重新选择');
+      dialogMask.hide();
+      locationDialog.hide();
+      $('#address').val(cityName);
+    }
   });
 
   // 检查表单的合法性
@@ -173,7 +230,7 @@
 
   // 控制提交按钮
   var agreementCheckBox = $('#agreement');
-  var btnSubmit = $('.btn-submit');
+  var btnSubmit = $('.btn-submit.disabled');
 
   if (btnSubmit.attr('class').indexOf('enabled') === -1) {
     btnSubmit.attr('disabled', 'disabled');

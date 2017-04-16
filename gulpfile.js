@@ -17,7 +17,6 @@ gulp.task('css', () => {
 
 gulp.task('js', () => {
   gulp.src(app.srcPath + 'js/**/*.js')
-      .pipe($.concat('main.js'))
       .pipe($.uglify())
       .pipe(gulp.dest(app.prdPath + 'js'))
 });

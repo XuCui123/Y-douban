@@ -162,7 +162,6 @@
       padding-bottom: 1em
       a:hover
         background-color: #039
-
 .dui-dialog-mask
   position: absolute
   width: 100%
@@ -175,9 +174,6 @@
   display: none
   z-index: 1000
   position: fixed
-  width: 340px
-  top: 32px
-  left: 504px
   visibility: visible
   .dui-dialog-shd
     position: absolute
@@ -327,3 +323,36 @@
             margin-left: 10px
           .item-number
             color: #42bd56
+      #l_tabs
+        li
+          padding: 0 12px
+          a:hover
+            background-color: #039
+        .selected
+          background-color: #93b77b
+          border-radius: 3px
+          a
+            color: #fff
+            cursor: default
+            &:hover
+              background: none
+      .panel
+        ul
+          border-top: 1px solid #ccc
+          padding: 12px 0 0 12px
+          margin: 10px 0
+          li
+            padding: 0 3px
+            margin-right: 12px
+          a
+            font-size: 14px
+            &:hover
+              background-color: #039
+      .loading
+        border-top: 1px solid #ccc
+        font-size: 14px
+        margin: 12px
+        color: #888
+        padding-top: 20px
+        width: auto
+        height: auto
