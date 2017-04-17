@@ -17,6 +17,9 @@ module.exports = (app) => {
   app.use('/register', require('./register'));
   // 登录
   app.use('/login', require('./login'));
+  // 密码修改
+  app.use('/resetpassword', require('./resetpassword'));
   // 用户
   app.use('/user', require('./user'));
+
 }

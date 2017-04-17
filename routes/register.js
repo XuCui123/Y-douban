@@ -7,7 +7,6 @@ var checkNotLogin = require('../middlewares/check').checkNotLogin;
 // register/email 异步校验邮箱是否存在
 router.put('/email', checkNotLogin, (req, res, next) => {
     var email = req.query.email;
-    console.log(email);
 
     User.findOne({email: email}, function (err, user) {
       if (err) console.log(err);
@@ -122,13 +121,13 @@ router.post('/', checkNotLogin, (req, res, next) => {
       req.flash('error', '邮箱已经注册过了！');
       return res.redirect('register');
     } else {
-      User.find({nickname: nickname}, (err, user) => {
+      User.findOne({nickname: nickname}, (err, user) => {
         if (err) console.log(err);
         if (user != null) {
           req.flash('error', '名号已经注册过了！');
           return res.redirect('register');
         } else {
-          User.find({phone: phone}, (err, user) => {
+          User.findOne({phone: phone}, (err, user) => {
             if (err) console.log(err);
             if (user != null) {
               req.flash('error', '手机号已经注册过了！');
