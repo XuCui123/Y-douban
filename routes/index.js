@@ -21,5 +21,10 @@ module.exports = (app) => {
   app.use('/resetpassword', require('./resetpassword'));
   // 用户
   app.use('/user', require('./user'));
+  // 豆瓣电影
+  app.use('/movie', require('./movie'));
 
+
+  // 后台管理
+  app.use('/admin', require('./admin'));
 }

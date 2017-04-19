@@ -55,13 +55,13 @@ UserSchema.methods = {
 }
 
 UserSchema.statics = {
-  fetch: (callback) => {
+  fetch: function (callback) {
     return this
       .find({})
       .sort('meta.createAt')
       .exec(callback)
   },
-  findById: (id, callback) => {
+  findById: function (id, callback) {
     return this
       .findOne({_id: id})
       .exec(callback)

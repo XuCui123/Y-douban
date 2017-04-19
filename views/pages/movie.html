@@ -1,0 +1,59 @@
+{% extends '../layout.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+  {% include '../components/common/db_global_nav.html' %}
+  <div class="db-nav-movie">
+    <div class="nav-wrapper">
+      <div class="nav-primary clearfix">
+        <div class="nav-logo">
+          <a href="/movie">豆瓣电影</a>
+        </div>
+        <div class="nav-search">
+          <form method="get">
+            <fieldset>
+              <legend>搜索：</legend>
+              <label for="inp-query">电影、影人、影院、电视剧</label>
+              <div class="inp">
+                <input type="text" id="search_text" name="search_text" size="22" autocomplete="off" placeholder="电影、影人、影院、电视剧">
+              </div>
+              <div class="btn">
+                <button type="submit">搜索</button>
+              </div>
+              <input type="hidden" name="cat" value="">
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="nav-secondary">
+      <ul class="nav-items">
+        <li>
+          <a href="">影讯&购票</a>
+        </li>
+        <li>
+          <a href="">选电影</a>
+        </li>
+        <li>
+          <a href="">电视剧</a>
+        </li>
+        <li>
+          <a href="">排行榜</a>
+        </li>
+        <li>
+          <a href="">分类</a>
+        </li>
+        <li>
+          <a href="">影评</a>
+        </li>
+        <li>
+          <a href="">2016年度榜单</a>
+        </li>
+        <li>
+          <a href="">2016观影报告</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+{% endblock %}
