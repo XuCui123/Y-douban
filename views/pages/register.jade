@@ -1,0 +1,280 @@
+extends ../layout
+
+block content
+  .wrapper
+    include ../components/account/header.jade
+    .register-wrapper.clearfix
+      h1 欢迎加入豆瓣
+      .register-form
+        form(method="POST")
+          .item.extra-tips
+            label 邮箱
+            input.basic-input#email(type="text" name="email")
+            span.validate-error
+          .item.extra-tips
+            label 密码
+            input.basic-input#password(type="password" name="password")
+            span.validate-option 至少包含字母和数字，最短8个字符，区分大小写
+            span.validate-error
+          .item.extra-tips
+            label 名号
+            input.basic-input#nickname(type="text" name="nickname")
+            span.validate-option 中、英文均可，最长14个英文或7个汉字
+            span.validate-error
+          .suggestion
+            span.tips 第一印象很重要，起个响亮的名号吧
+          .item
+            label 常居地
+            span.loc
+              em
+                | 豆瓣猜你在
+                strong 成都
+                | ,没猜对？
+              a.location-choose-hook(href="javascript:void(0)") 手动选择
+              input#address(type="hidden" name="address" value="成都")
+          .item
+            label 手机号
+            .phone-input
+              span.district-choose-hook +86
+              input#phone_num(type="text" name="phone_num")
+              input#phone(type="hidden" name="phone" value="+86")
+              span.phone-error 请输入正确的手机号
+          .suggestion
+            span.tips 用手机接收注册验证码<br>验证的手机号如果没有绑定过帐号，会自动绑定当前帐号
+          .item.catcha-item
+            label 验证码
+            input.basic-input#code(type="text" name="code")
+            button.phone-code-btn(type="button") 获取验证码
+            span.phone-code-right 
+              | 请输入验证码：
+              span.code
+            span.phone-code-error 验证码不正确，请重新获取
+          .item-error
+            if error
+              p #{error}
+          .item
+            p.agreement
+              label.agreement-label(for="agreement")
+                input#agreement(type="checkbox")
+                | 我已经认真的阅读并同意豆瓣的《
+                a(href="") 使用协议
+                | 》
+          .item.item-submit
+            label &nbsp;
+            button.register-submit-btn.disabled(type="submit" disabled) 注册
+      ul.register-aside
+        li &gt;&nbsp;已经拥有豆瓣帐号？
+          a(href="/login") 直接登录
+        li &gt;&nbsp;
+          a(href="") 点击下载豆瓣移动应用
+
+    include ../components/account/footer.jade
+
+  .dui-dialog-mask
+  .dui-dialog#dui-dialog0(style="width: 340px; top: 32px; left: 504px")
+    span.dui-dialog-shd
+    .dui-dialog-content
+      a.dui-dialog-close(href="javascript:void(0)") X
+      .hd
+        h3 选择国际区号
+      .bd
+        ul.phone-list
+          li.is-active
+            span.item-district
+              span.flag.cn
+              | &nbsp;中国
+            span.item-number +86
+          li
+            span.item-district
+              span.flag.hk
+              | &nbsp;香港地区
+            span.item-number +852
+          li
+            span.item-district
+              span.flag.mo
+              | &nbsp;澳门
+            span.item-number +853
+          li
+            span.item-district
+              span.flag.tw
+              | &nbsp;台湾地区
+            span.item-number +886
+          li
+            span.item-district
+              span.flag.jp
+              | &nbsp;日本
+            span.item-number +81
+          li
+            span.item-district
+              span.flag.kr
+              | &nbsp;韩国
+            span.item-number +82
+          li
+            span.item-district
+              span.flag.sg
+              | &nbsp;新加坡
+            span.item-number +65
+          li
+            span.item-district
+              span.flag.th
+              | &nbsp;泰国
+            span.item-number +66
+          li
+            span.item-district
+              span.flag.my
+              | &nbsp;马来西亚
+            span.item-number +60
+          li
+            span.item-district
+              span.flag.us
+              | &nbsp;美国
+            span.item-number +1
+          li
+            span.item-district
+              span.flag.ca
+              | &nbsp;加拿大
+            span.item-number +1
+          li
+            span.item-district
+              span.flag.au
+              | &nbsp;澳大利亚
+            span.item-number +61
+          li
+            span.item-district
+              span.flag.gb
+              | &nbsp;英国
+            span.item-number +44
+          li
+            span.item-district
+              span.flag.de
+              | &nbsp;德国
+            span.item-number +49
+          li
+            span.item-district
+              span.flag.fr
+              | &nbsp;法国
+            span.item-number +33
+          li
+            span.item-district
+              span.flag.ru
+              | &nbsp;俄罗斯
+            span.item-number +7
+          li
+            span.item-district
+              span.flag.in
+              | &nbsp;印度
+            span.item-number +91
+          li
+            span.item-district
+              span.flag.nz
+              | &nbsp;新西兰
+            span.item-number +64
+          li
+            span.item-district
+              span.flag.it
+              | &nbsp;意大利
+            span.item-number +39
+          li
+            span.item-district
+              span.flag.nl
+              | &nbsp;荷兰
+            span.item-number +31
+          li
+            span.item-district
+              span.flag.es
+              | &nbsp;西班牙
+            span.item-number +34
+          li
+            span.item-district
+              span.flag.se
+              | &nbsp;瑞典
+            span.item-number +46
+          li
+            span.item-district
+              span.flag.at
+              | &nbsp;奥地利
+            span.item-number +43
+          li
+            span.item-district
+              span.flag.ch
+              | &nbsp;瑞士
+            span.item-number +41
+          li
+            span.item-district
+              span.flag.lt
+              | &nbsp;立陶宛
+            span.item-number +370
+          li
+            span.item-district
+              span.flag.ph
+              | &nbsp;菲律宾
+            span.item-number +63
+          li
+            span.item-district
+              span.flag.id
+              | &nbsp;印度尼西亚
+            span.item-number +62
+          li
+            span.item-district
+              span.flag.vn
+              | &nbsp;越南
+            span.item-number +84
+          li
+            span.item-district
+              span.flag.ae
+              | &nbsp;阿联酋
+            span.item-number +971
+  .dui-dialog#dui-dialog1(style="width: 560px; top: 99px; left: 394px")
+    span.dui-dialog-shd
+    .dui-dialog-content
+      a.dui-dialog-close(href="javascript:void(0)") X
+      .hd
+        h3 选择你的常居地
+      .bd(style="height: auto;overflow: visible;")
+        ul#location_tabs
+          li.selected
+            a#a_directly.loc-type(href="javascript:void(0)") 直达链接
+          li
+            a#a_china.loc-type(href="javascript:void(0)") 中国大陆
+          li
+            a#a_zone.loc-type(href="javascript:void(0)") 国家和地区
+        #p_directly
+          .panel
+            ul
+              li
+                a.habitable(href="javascript:void(0)") 北京
+              li
+                a.habitable(href="javascript:void(0)") 上海
+              li
+                a.habitable(href="javascript:void(0)") 广州
+              li
+                a.habitable(href="javascript:void(0)") 深圳
+              li
+                a.habitable(href="javascript:void(0)") 成都
+              li
+                a.habitable(href="javascript:void(0)") 武汉
+              li
+                a.habitable(href="javascript:void(0)") 杭州
+              li
+                a.habitable(href="javascript:void(0)") 重庆
+              li
+                a.habitable(href="javascript:void(0)") 郑州
+              li
+                a.habitable(href="javascript:void(0)") 南京
+              li
+                a.habitable(href="javascript:void(0)") 西安
+              li
+                a.habitable(href="javascript:void(0)") 苏州
+              li
+                a.habitable(href="javascript:void(0)") 天津
+              li
+                a.habitable(href="javascript:void(0)") 长沙
+              li
+                a.habitable(href="javascript:void(0)") 福州
+        #p_china(style="display: none;")
+          .panel
+            ul 暂时不支持哦
+        #p_zone(style="display: none")
+          .panel
+            ul 暂时不支持哦
+        p.loading(style="display: none") 正在加载数据，请稍后...

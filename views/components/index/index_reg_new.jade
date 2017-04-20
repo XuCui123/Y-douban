@@ -1,0 +1,43 @@
+.index-reg-new
+  .wrapper
+    .index-login
+      form(method="POST")
+        .item.item-account
+          input.inp(type="text" placeholder="邮箱 / 手机号")
+        .item.item-passwd
+          input.inp(type="password" placeholder="密码")
+          .option-help
+            a(href="/resetpasswd") 帮助
+        .item.item-submit
+          button.login-btn(type="submit") 登录豆瓣
+          a.register-link(href="/register") 注册帐号
+        .item.item-action
+          label(for="remember_me")
+            input#remember_me(type="checkbox")
+            | 记住我
+          ul.item-action-third
+            li
+              a.wechat(href="") 微信登录
+            li
+              a.weibo(href="") 微博登录
+    .index-app
+      p.app-title
+        - 豆瓣
+        span 4.0
+      p.app-slogan
+        span 我们的精神角落
+      a.app-link 下载豆瓣 App
+      .app-qr.app-qr-hook
+        a.app-qr-link(href="javascript:viod(0)")
+          img(src="dist/img/index/index_icon_qrcode.png" width="28" height="28")
+        .app-qr-expand
+          img(src="dist/img/index/index_qrcode.jpg" width="160" height="160")
+          p 偷偷关注我一下咯
+  script(type="text/javascript").
+    var index_app_qr = $(".app-qr-hook");
+
+    index_app_qr.hover(function () {
+      index_app_qr.addClass('open');
+    }, function () {
+      index_app_qr.removeClass('open');
+    });

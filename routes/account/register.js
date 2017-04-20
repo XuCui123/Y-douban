@@ -2,9 +2,9 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
-var checkNotLogin = require('../middlewares/check').checkNotLogin;
+var checkNotLogin = require('../../middlewares/check').checkNotLogin;
 
-// register/email 异步校验邮箱是否存在
+// PUT register/email 异步校验邮箱是否存在
 router.put('/email', checkNotLogin, (req, res, next) => {
     var email = req.query.email;
 
@@ -17,7 +17,7 @@ router.put('/email', checkNotLogin, (req, res, next) => {
     })
 });
 
-// register/nickname 异步校验名号是否存在
+// PUT register/nickname 异步校验名号是否存在
 router.put('/nickname', checkNotLogin, (req, res, next) => {
     var nickname = req.query.nickname;
 
@@ -30,7 +30,7 @@ router.put('/nickname', checkNotLogin, (req, res, next) => {
     })
 });
 
-// register/phone 异步校验手机号是否存在
+// PUT register/phone 异步校验手机号是否存在
 router.put('/phone', checkNotLogin, (req, res, next) => {
     var phone = req.query.phone;
 
@@ -45,7 +45,7 @@ router.put('/phone', checkNotLogin, (req, res, next) => {
 
 // 模拟验证码
 var PHONE_CODE = '';
-// register/phonecode
+// GET register/phonecode
 router.get('/phonecode', checkNotLogin, (req, res, next) => {
   var number = '';
 
@@ -62,11 +62,12 @@ router.get('/phonecode', checkNotLogin, (req, res, next) => {
 
 });
 
-// register 注册页
+// GET register 注册页
 router.get('/', checkNotLogin, (req, res, next) => {
   res.render('register', { title: '欢迎加入豆瓣' });
 });
 
+// POST user/register 注册逻辑
 router.post('/', checkNotLogin, (req, res, next) => {
   var code = req.fields.code;
   // 模拟验证码校验

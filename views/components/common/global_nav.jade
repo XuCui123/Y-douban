@@ -1,0 +1,80 @@
+.global-nav
+  .bd.clearfix
+    .top-nav-info
+      if user
+        ul
+          li
+            a.top-nav-doumail-link(href="/") 豆邮
+          li.nav-user-account
+            a.btn-more(href="javascript:void(0)")
+              span #{user.nickname}的帐号
+              span.arrow
+            .more-items
+              ul
+                li
+                  a(href="#") 个人主页
+                li
+                  a(href="#") 我的订单
+                li
+                  a(href="#") 我的钱包
+                li
+                  a(href="#") 帐号管理
+                li
+                  a(href="/signout") 退出            
+      else
+        a(href="/login") 登录
+        a(href="/register") 注册
+    if user
+      .top-nav-reminder
+        a.link-remind(href="#") 提醒
+        .more-items
+          .bd
+            p 加载中...
+    .top-nav-doubanapp
+      a.link-doubanapp(href="javascript:void(0)") 下载豆瓣客户端
+      .more-items
+        p.appintro-title 豆瓣
+        p.slogan 我们的精神角落
+        p.qrcode 扫码关注我一下咯
+        .download
+          a(href="#") iPhone
+          span ·
+          a(href="#") Android
+    .global-nav-items
+      ul
+        li
+          a(href="/") 豆瓣
+        li
+          a(href="/book") 读书
+        li
+          a(href="/movie") 电影
+        li
+          a(href="/music") 音乐
+        li
+          a(href="/location") 同城
+        li
+          a(href="/grounp") 小组
+        li
+          a(href="/read") 阅读
+        li
+          a(href="/fm") FM
+        li
+          a(href="/something") 东西
+        li
+          a(href="/market") 市集
+        li
+          a(href="javascript:void(0)") 更多
+  script(type="text/javascript").
+    $('.nav-user-account').on('click', function () {
+      $('.nav-user-account').toggleClass('more-active');
+    });
+
+    $('.link-remind').on('click', function () {
+      $('.top-nav-reminder').toggleClass('more-active');
+    });
+
+    $('.top-nav-doubanapp').hover( function () {
+      $('.top-nav-doubanapp').addClass('more-active');
+    }, function () {
+      $('.top-nav-doubanapp').removeClass('more-active');
+    });

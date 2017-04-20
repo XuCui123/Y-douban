@@ -8,11 +8,4 @@ router.get('/', checkLogin, (req, res, next) => {
 });
 
 
-// GET /signout
-router.get('/signout', checkLogin,(req, res, next) => {
-  // 清空 session 中用户信息
-  req.session.user = null;
-  res.redirect('/');
-})
-
 module.exports = router;

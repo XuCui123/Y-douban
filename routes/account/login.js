@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
-var checkNotLogin = require('../middlewares/check').checkNotLogin;
+var checkNotLogin = require('../../middlewares/check').checkNotLogin;
 
 // GET /login 登录页
 router.get('/', checkNotLogin, (req, res, next) => {

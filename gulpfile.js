@@ -12,13 +12,14 @@ gulp.task('css', () => {
       .pipe($.stylus({
         compress: true
       }))
-      .pipe(gulp.dest(app.prdPath + 'css'))
+      .pipe(gulp.dest(app.prdPath))
 });
 
 gulp.task('js', () => {
   gulp.src(app.srcPath + 'js/**/*.js')
+      .pipe($.concat('main.js'))
       .pipe($.uglify())
-      .pipe(gulp.dest(app.prdPath + 'js'))
+      .pipe(gulp.dest(app.prdPath))
 });
 
 gulp.task('img', () => {
@@ -39,7 +40,7 @@ gulp.task('server', () => {
   $.nodemon({
     script: 'app.js',
     ignore: ["gulpfile.js", "node_modules/", "public/**/*.*"],
-    ext: 'js html',
+    ext: 'js jade',
     env: {
       'NODE_ENV': 'development'
     }
