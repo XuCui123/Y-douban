@@ -1,0 +1,55 @@
+extends ../layout
+
+block content
+  .wrapper
+    include ../components/account/header.jade
+    .login-wrapper.clearfix
+      h1 登录豆瓣
+      .login-form
+        form(method="POST")
+          .item-error
+            if error
+              p #{error}
+          #username_login
+            .item-right
+              a#switch_username_login_way(href="javascript:void(0)") 手机验证码登录
+            .item
+              label 帐号
+              input.basic-input(type="text" name="email" placeholder="邮箱/手机号/用户名")
+            .item
+              label 密码
+              input.basic-input(type="password" name="password")
+            .item
+              label &nbsp;
+              p.remember
+                input#remeber(type="checkbox")
+                label.remember(for="remember") 下次自动登录|
+                a(href="/resetpassword") 忘记密码了
+            .item
+              label &nbsp;
+              button.login-submit-btn(type="submit") 登录
+            .item.item-3rd.clearfix
+              label 第三方登录：
+                a(href="")
+                  img(src="dist/img/account/account_wechat.png" alt="微信登录")
+                a(href="")
+                  img(src="dist/img/account/account_weibo.png" alt="微博登录")
+          #phonecode_login(style="display: none")
+            .item-right
+              a#switch_phonecode_login_way(href="javascript:void(0)") 帐号密码登录
+            .item
+              label 手机号
+              input.basic-input(type="text" name="email" placeholder="邮箱/手机号/用户名")
+            .item
+              label 验证码
+              input.basic-input.small(type="text" name="code")
+              button.get-code-btn(type="button") 获取验证码
+            .item
+              label &nbsp;
+              button.login-submit-btn(type="submit") 登录
+      ul.login-aside
+        li &gt;&nbsp;还没有豆瓣帐号？
+          a(href="/register") 立即注册
+        li &gt;&nbsp;
+          a(href="") 点击下载豆瓣移动应用
+    include ../components/account/footer.jade

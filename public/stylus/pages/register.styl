@@ -1,6 +1,3 @@
-@import "components/account/header.styl"
-@import "components/account/footer.styl"
-
 .register-wrapper
   margin-bottom: 40px
   .register-form
@@ -24,6 +21,7 @@
           font-size: 14px
           line-height: 30px
           vertical-align: middle
+          font-weight: normal
         .basic-input
           width: 200px
           height: 18px
@@ -38,6 +36,7 @@
           em
             font-style: normal
             color: #808080
+            margin-right: 10px
             strong
               font-weight: normal
               color: #111111
@@ -90,13 +89,15 @@
         .agreement
           margin-left: 75px
           .agreement-label
-            display: inline
             width: auto
             text-align: left
             float: none
             cursor: pointer
             color: #000
             font-size: 12px
+            input
+              margin-top: -1px
+              margin-right: 5px
             a:hover
               background-color: #039
         .register-submit-btn
@@ -151,7 +152,7 @@
         .validate-option,.validate-error
           display: none
           padding-left: 10px
-          background: url('../../../img/tips_arrow.gif') no-repeat
+          background: url('../../../dist/img/account/account_tips_arrow.gif') no-repeat
         .validate-option
           background-position: left 3px
           color: #808080
@@ -261,7 +262,7 @@
               margin: -2px 10px 0 0
               width: 16px
               height: 11px
-              background: url('../../../img/national_flags.png') no-repeat
+              background: url('../../../dist/img/account/account_national_flags.png') no-repeat
             .flag.cn
               background-position: 0 -506px
             .flag.hk

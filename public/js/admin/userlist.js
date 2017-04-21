@@ -1,8 +1,8 @@
 ;(function () {
-  $('.del').on('click', function (event) {
+  $('.admin_userlist_del').on('click', function (event) {
     var target = $(event.target);
-    var id = target.data('id');
-    var tr = $('#user-id-' + id);
+    var id = target.data('id').replace('\"', '').replace('\"', '');
+    var tr = $('.user-id-' + id);
     $.ajax({
       type: 'DELETE',
       url: '/admin/userlist?id=' + id

@@ -138,7 +138,7 @@ router.post('/', checkNotLogin, (req, res, next) => {
               user.save(function(err, user) {
                 if (err) console.log(err);
                 req.session.user = user;
-                res.redirect('/');
+                res.redirect('/user');
               });
             }
           });

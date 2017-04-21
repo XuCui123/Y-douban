@@ -1,0 +1,33 @@
+extends ../layout
+
+block content
+  include ../components/common/global_nav.jade
+  .db-nav-movie
+    .nav-wrapper
+      .nav-primary.clearfix
+        .nav-logo
+          a(href="/movie") 豆瓣电影
+        .nav-search
+          form(method="GET")
+            .inp
+              input#movie_search_text(type="text" name="movie_search_text" autocomplete="off" placeholder="电影、影人、影院、电视剧")
+            button.btn(type="submit") 搜索
+            input(type="hidden" name="cat" value="")
+    .nav-secondary
+      ul.nav-items
+        li
+          a(href="") 影讯&购票
+        li
+          a(href="") 选电影
+        li
+          a(href="") 电视剧
+        li
+          a(href="") 排行榜
+        li
+          a(href="") 分类
+        li
+          a(href="") 影评
+        li
+          a(href="") 2016年度榜单
+        li
+          a(href="") 2016观影报告
