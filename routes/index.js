@@ -24,6 +24,20 @@ module.exports = (app) => {
   app.use('/user', require('./user'));
   // 豆瓣电影
   app.use('/movie', require('./movie'));
+  // 豆瓣读书
+  app.use('/book', require('./book'));
+  // 豆瓣音乐
+  app.use('/music', require('./music'));
+  // 豆瓣小组
+  app.use('/group', require('./group'));
+  // 豆瓣同城
+  app.use('/location', require('./location'));
+  // 豆瓣FM
+  app.use('/fm', require('./fm'));
+  // 豆瓣东西
+  app.use('/dongxi', require('./dongxi'));
+  // 豆瓣市集
+  app.use('/market', require('./market'));
   // 后台管理
   app.use('/admin', require('./admin'));
 }
