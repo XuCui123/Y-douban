@@ -15,6 +15,7 @@ var MovieSchema = new Schema({
   year: String,
   duration: String,
   alias: String,
+  post: String,
   meta: {
     createAt: {
       type: Date,

@@ -1,0 +1,69 @@
+extends ../layout
+
+block content
+  include ../components/common/global_nav.jade
+  include ../components/movie/movie_nav.jade
+  .wrapper
+    .movie-content
+      .ad
+      h1
+        span #{movie.name}
+        span.year (#{movie.year})
+      .main.clearfix
+        .movie-desc
+        .aside
+          .ticket
+            a.ticket-btn(href="") 豆瓣购票 12元起
+          //- 广告begin
+          .ad(style="width: 100%; height: 250px;background: #f0f3f5") 此处为广告
+          //- 广告end
+          .qrcode-app
+            a.download(href="")
+          .gray-ad
+            h2 本片原声正在播放&nbsp;·&nbsp;·&nbsp;·&nbsp;·&nbsp;·&nbsp;·&nbsp;
+            a(href="" target="_blank") 去豆瓣音乐收听
+          .tags
+            h2 豆瓣成员常用的标签&nbsp;·&nbsp;·&nbsp;·&nbsp;·&nbsp;·&nbsp;·&nbsp;
+            .tags-body
+              a(href="") 动作
+              a(href="") 美国
+              a(href="") 跑车
+              a(href="") 赛车
+              a(href="") 2017
+              a(href="") 犯罪
+              a(href="") 冒险
+              a(href="") 经典
+          .doulist
+            h2 
+              | 以下豆列推荐&nbsp;·&nbsp;·&nbsp;·&nbsp;·&nbsp;·&nbsp;·&nbsp;(&nbsp;
+              a(href="") 全部
+              | &nbsp;)
+            ul
+              li
+                a(href="") 豆瓣电影「口碑榜」2017-02-21更新
+                span (影志)
+              li
+                a(href="") 2017-2022值得期待的美国影片
+                span (closer)
+              li
+                a(href="") 生活有这些期待很有动力
+                span (freedom)
+              li
+                a(href="") 豆瓣上评分人数超过5万评分高于7分的电影
+                span (stupdliar)
+              li
+                a(href="") 不把每部都看齐就膈应
+                span (日珥man)
+          .other
+            h2 谁在看这部电影&nbsp;·&nbsp;·&nbsp;·&nbsp;·&nbsp;·&nbsp;·&nbsp;
+            a(href="") 104327人看过
+            | &nbsp;/&nbsp;
+            a(href="") 27398人想看
+          //- 广告begin
+          .ad(style="width: 100%; height: 250px;background: #f0f3f5") 此处为广告
+          //- 广告end
+          .feed
+            span 订阅#{movie.name}的评论：
+            span.feed-img
+              a(href="") feed: rss 2.0
+    include ../components/common/global_footer.jade

@@ -20,6 +20,7 @@
           $('#movie_country').val(data.countries);
           $('#movie_year').val(data.year);
           $('#movie_alias').val(data.aka);
+          $('#movie_post').val(data.images.medium);
         }
       });
     }

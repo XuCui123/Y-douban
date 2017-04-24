@@ -1,0 +1,54 @@
+extends ../layout
+
+block content
+  .wrapper(style="margin-top: 50px")
+    h3
+      span.glyphicon.glyphicon-tree-deciduous
+      | 豆瓣影人录入
+    .notification-info(style="width: 100%; height: 50px;")
+      if error
+        p #{error}
+    .form-wrapper
+      form.form-horizontal(method="POST")
+        .form-group
+          label.col-md-2.control-label(for="movie_celebrity_douban") 豆瓣同步
+          .col-md-6
+            input#movie_celebrity_douban.form-control(type="text")
+          .col-md-2
+            button#movie_celebrity_douban_btn.btn.btn-primary(type="button") 同步
+        .form-group
+          label.col-md-2.control-label(for="movie_celebrity_name") 中文名
+          .col-md-6
+            input#movie_celebrity_name.form-control(type="text" name="movie_celebrity_name")
+        .form-group
+          label.col-md-2.control-label(for="movie_celebrity_name_en") 英文名
+          .col-md-6
+            input#movie_celebrity_name_en.form-control(type="text" name="movie_celebrity_name_en")
+        .form-group
+          label.col-md-2.control-label(for="movie_celebrity_gender") 性别
+          .col-md-6
+            input#movie_celebrity_gender.form-control(type="text" name="movie_celebrity_gender")
+        .form-group
+          label.col-md-2.control-label(for="movie_celebrity_constellayion") 星座
+          .col-md-6
+            input#movie_celebrity_constellayion.form-control(type="text" name="movie_celebrity_constellayion")
+        .form-group
+          label.col-md-2.control-label(for="movie_celebrity_bornplace") 出生地
+          .col-md-6
+            input#movie_celebrity_bornplace.form-control(type="text" name="movie_celebrity_bornplace")
+        .form-group
+          label.col-md-2.control-label(for="movie_celebrity_aka") 更多中文名
+          .col-md-6
+            input#movie_celebrity_aka.form-control(type="text" name="movie_celebrity_aka")
+        .form-group
+          label.col-md-2.control-label(for="movie_celebrity_aka_en") 更多外文名
+          .col-md-6
+            input#movie_celebrity_aka_en.form-control(type="text" name="movie_celebrity_aka_en")
+        .form-group
+          label.col-md-2.control-label(for="movie_celebrity_website") 官方网站
+          .col-md-6
+            input#movie_celebrity_website.form-control(type="text" name="movie_celebrity_website")
+        .form-group
+          label.col-md-2.control-label(for="movie_celebrity_avatar") 头像
+          .col-md-6
+            input#movie_celebrity_avatar.form-control(type="text" name="movie_celebrity_avatar")

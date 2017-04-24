@@ -60,14 +60,15 @@ router.post('/movie/create', (req, res, next) => {
 
   var movie_name = req.fields.movie_name;
   var movie_director = req.fields.movie_director;
-  var movie_screenwriter = req.fields.screenwriter;
+  var movie_screenwriter = req.fields.movie_screenwriter;
   var movie_actor = req.fields.movie_actor;
   var movie_categories = req.fields.movie_categories;
   var movie_country = req.fields.movie_country;
   var movie_language = req.fields.movie_language;
-  var movie_year = req.fields.movive_year;
+  var movie_year = req.fields.movie_year;
   var movie_duration = req.fields.movie_duration;
   var movie_alias = req.fields.movie_alias;
+  var movie_post = req.fields.movie_post
 
   var _movie = {
     name: movie_name,
@@ -79,7 +80,8 @@ router.post('/movie/create', (req, res, next) => {
     language: movie_language,
     year: movie_year,
     duration: movie_duration,
-    alias: movie_alias
+    alias: movie_alias,
+    post: movie_post
   }
 
   Movie.findOne({name: movie_name}, function (err, movie) {
@@ -93,12 +95,49 @@ router.post('/movie/create', (req, res, next) => {
       movie.save(function (err, movie) {
         if (err) console.log(err);
 
-        res.redirect('/admin');
+        res.redirect('/admin/movie/list');
       });
     }
-
   });
-
 });
+
+// GET /admin/movie/list 豆瓣电影后台列表
+router.get('/movie/list', (req, res, next) => {
+  var page = parseInt(req.query.p, 10) || 0;
+  var count = 10;
+  var index = page * count;
+
+  Movie.fetch(function (err, movies) {
+    if (err) console.log(err);
+    results = movies.slice(index, index + count);
+    res.render('admin_movie_list', {
+      title: '豆瓣电影列表',
+      currentPage: (page + 1),
+      totalPage: Math.ceil(movies.length / count),
+      movies: results
+    });
+  });
+});
+
+// DELETE /admin/movie/list 电影删除交换
+router.delete('/movie/list', (req, res, next) => {
+  var id = req.query.id;
+  if (id) {
+    Movie.remove({_id: id}, (err, movie) => {
+      if (err) {
+        console.log(err);
+        res.json({ success: 0 });
+      } else {
+        res.json({ success: 1 });
+      }
+    });
+  }
+});
+
+// GET /admin/celebrity/create 豆瓣影人后台录入页
+router.get('/celebrity/create', (req, res, next) => {
+  res.render('admin_movie_celebrity_create', { title: '豆瓣影人录入' });
+});
+
 
 module.exports = router;
