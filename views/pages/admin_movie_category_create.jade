@@ -1,0 +1,19 @@
+extends ../layout
+
+block content
+  .wrapper(style="margin-top: 50px")
+    h3
+      span.glyphicon.glyphicon-tree-deciduous
+      | 豆瓣电影分类录入
+    .notification-info(style="width: 100%; height: 50px;")
+      if error
+        p #{error}
+    .form-wrapper
+      form.form-horizontal(method="POST")
+        .form-group
+          label.col-md-2.control-label(for="movie_category_name") 分类名称
+          .col-md-6
+            input#movie_category_name.form-control(type="text" name="movie_category_name")
+        .form-group
+          .col-md-offset-2.col-md-10
+            button.btn.btn-default(type="submit") 录入

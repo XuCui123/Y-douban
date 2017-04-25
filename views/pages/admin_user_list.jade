@@ -30,7 +30,7 @@ block content
         - if (currentPage == 1) {
           span &laquo;
         - }else{
-          a(href='/admin/userlist?p=' + (currentPage-2)) &laquo;
+          a(href='/admin/user/list?p=' + (currentPage-2)) &laquo;
         - }           
       - for (var i = 0; i < totalPage; i++) {
         - if (currentPage == (i + 1)) {
@@ -38,12 +38,12 @@ block content
             span #{currentPage}
         - }else {
           li
-            a(href='/admin/userlist?p=' + i) #{i + 1}
+            a(href='/admin/user/list?p=' + i) #{i + 1}
         - }
       - }
       li
         - if (currentPage == totalPage) {
           span &raquo;
         - }else{
-          a(href='/admin/userlist?p=' + (currentPage)) &raquo;
+          a(href='/admin/user/list?p=' + (currentPage)) &raquo;
         - } 

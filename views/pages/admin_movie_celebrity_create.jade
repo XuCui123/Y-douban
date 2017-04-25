@@ -13,7 +13,7 @@ block content
         .form-group
           label.col-md-2.control-label(for="movie_celebrity_douban") 豆瓣同步
           .col-md-6
-            input#movie_celebrity_douban.form-control(type="text")
+            input#movie_celebrity_douban.form-control(type="text" name="movie_celebrity_douban_id")
           .col-md-2
             button#movie_celebrity_douban_btn.btn.btn-primary(type="button") 同步
         .form-group
@@ -33,9 +33,9 @@ block content
           .col-md-6
             input#movie_celebrity_constellayion.form-control(type="text" name="movie_celebrity_constellayion")
         .form-group
-          label.col-md-2.control-label(for="movie_celebrity_bornplace") 出生地
+          label.col-md-2.control-label(for="movie_celebrity_born_place") 出生地
           .col-md-6
-            input#movie_celebrity_bornplace.form-control(type="text" name="movie_celebrity_bornplace")
+            input#movie_celebrity_born_place.form-control(type="text" name="movie_celebrity_born_place")
         .form-group
           label.col-md-2.control-label(for="movie_celebrity_aka") 更多中文名
           .col-md-6
@@ -52,3 +52,6 @@ block content
           label.col-md-2.control-label(for="movie_celebrity_avatar") 头像
           .col-md-6
             input#movie_celebrity_avatar.form-control(type="text" name="movie_celebrity_avatar")
+        .form-group
+          .col-md-offset-2.col-md-10
+            button.btn.btn-default(type="submit") 录入
