@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var ObjectId = Schema.Types.ObjectId;
 
 var MovieCelebritySchema = new Schema({
   douban_id: {
@@ -10,11 +11,15 @@ var MovieCelebritySchema = new Schema({
   name_en: String,
   gender: String,
   constellayion: String,
+  birthday: String,
   born_place: String,
-  aka: String,
-  aka_en: String,
+  professions: [String],
+  aka: [String],
+  aka_en: [String],
   website: String,
-  avatar: String,
+  avatar: Object,
+  summary: String,
+  works: [String],
   meta: {
     createAt: {
       type: Date,

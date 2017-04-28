@@ -2,4 +2,26 @@ extends ../layout
 
 block content
   .wrapper
-    a(href="/admin/userlist") 用户管理
+    .row.admin-wrapper(style="margin-top: 50px;")
+      .user-wrapper.clearfix
+        .h2 用户管理
+        .col-md-2
+          a.btn.btn-default(href="/admin/user/list") 用户列表
+      .movie-wrapper.clearfix(style="margin-top: 50px;")
+        .h2 电影管理
+        .col-md-2
+          a.btn.btn-default(href="/admin/movie/create") 电影录入
+        .col-md-2
+          a.btn.btn-default(href="/admin/movie/list") 电影列表
+        .col-md-2
+          a.btn.btn-default(href="/admin/celebrity/create") 影人录入
+        .col-md-2
+          a.btn.btn-default(href="/admin/celebrity/list") 影人列表
+        .col-md-2
+          a.btn.btn-default(href="/admin/category/create") 分类录入
+        .col-md-2
+          a.btn.btn-default(href="/admin/category/list") 分类列表
+      .index-wrapper(style="margin-top: 50px;")
+        .h2 &nbsp;
+        .col-md-2
+          a.btn.btn-primary(href="/") 返回主页

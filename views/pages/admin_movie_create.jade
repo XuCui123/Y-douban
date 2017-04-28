@@ -11,55 +11,69 @@ block content
     .form-wrapper
       form.form-horizontal(method="POST")
         .form-group
-          label.col-md-2.control-label(for="movie_douban") 豆瓣同步
+          label.col-md-2.control-label(for="movie_douban_id") 豆瓣同步
           .col-md-6
-            input#movie_douban.form-control(type="text")
+            input#movie_douban_id.form-control(type="text" name="movie_douban_id")
           .col-md-2
             button#movie_douban_btn.btn.btn-primary(type="button") 同步
         .form-group
-          label.col-md-2.control-label(for="movie_name") 电影名称
+          label.col-md-2.control-label(for="movie_title") 电影名称
           .col-md-6
-            input#movie_name.form-control(type="text" name="movie_name")
+            input#movie_title.form-control(type="text" name="movie_title")
         .form-group
-          label.col-md-2.control-label(for="movie_director") 导演
+          label.col-md-2.control-label(for="movie_original_title") 电影原名
           .col-md-6
-            input#movie_director.form-control(type="text" name="movie_director")
+            input#movie_original_title.form-control(type="text" name="movie_original_title")
         .form-group
-          label.col-md-2.control-label(for="movie_screenwriter") 编剧
+          label.col-md-2.control-label(for="movie_year") 上映年份
           .col-md-6
-            input#movie_screenwriter.form-control(type="text" name="movie_screenwriter")
+            input#movie_year.form-control(type="text" name="movie_year")
         .form-group
-          label.col-md-2.control-label(for="movie_actor") 主演
+          label.col-md-2.control-label(for="movie_directors") 导演
           .col-md-6
-            input#movie_actor.form-control(type="text" name="movie_actor")
+            input#movie_directors.form-control(type="text" name="movie_directors")
+        .form-group
+          label.col-md-2.control-label(for="movie_writers") 编剧
+          .col-md-6
+            input#movie_writers.form-control(type="text" name="movie_writers")
+        .form-group
+          label.col-md-2.control-label(for="movie_casts") 主演
+          .col-md-6
+            input#movie_casts.form-control(type="text" name="movie_casts")
         .form-group
           label.col-md-2.control-label(for="movie_categories") 类型
           .col-md-6
             input#movie_categories.form-control(type="text" name="movie_categories")
         .form-group
-          label.col-md-2.control-label(for="movie_country") 制片国/地区
+          label.col-md-2.control-label(for="movie_countries") 制片国/地区
           .col-md-6
-            input#movie_country.form-control(type="text" name="movie_country")
+            input#movie_countries.form-control(type="text" name="movie_countries")
         .form-group
-          label.col-md-2.control-label(for="movie_language") 语言
+          label.col-md-2.control-label(for="movie_languages") 语言
           .col-md-6
-            input#movie_language.form-control(type="text" name="movie_language")
+            input#movie_languages.form-control(type="text" name="movie_languages")
         .form-group
-          label.col-md-2.control-label(for="movie_year") 上映日期
+          label.col-md-2.control-label(for="movie_pubdate") 上映日期
           .col-md-6
-            input#movie_year.form-control(type="text" name="movie_year")
+            input#movie_pubdate.form-control(type="text" name="movie_pubdate")
         .form-group
-          label.col-md-2.control-label(for="movie_duration") 片长
+          label.col-md-2.control-label(for="movie_durations") 片长
           .col-md-6
-            input#movie_duration.form-control(type="text" name="movie_duration")
+            input#movie_durations.form-control(type="text" name="movie_durations")
         .form-group
-          label.col-md-2.control-label(for="movie_alias") 又名
+          label.col-md-2.control-label(for="movie_aka") 又名
           .col-md-6
-            input#movie_alias.form-control(type="text" name="movie_alias")
+            input#movie_aka.form-control(type="text" name="movie_aka")
         .form-group
-          label.col-md-2.control-label(for="movie_post") 海报
+          label.col-md-2.control-label(for="movie_images") 海报
           .col-md-6
-            input#movie_post.form-control(type="text" name="movie_post")
+            input#movie_images.form-control(type="text" name="movie_images")
         .form-group
-          .col-md-offset-2.col-md-10
+          label.col-md-2.control-label(for="movie_summary") 简介
+          .col-md-6
+            textarea#movie_summary.form-control(type="text" name="movie_summary")
+        .form-group
+          .col-md-offset-2.col-md-5
             button.btn.btn-default(type="submit") 录入
+          .col-md-5
+            a.btn.btn-primary(href="/admin") 返回

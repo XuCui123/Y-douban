@@ -33,9 +33,17 @@ block content
           .col-md-6
             input#movie_celebrity_constellayion.form-control(type="text" name="movie_celebrity_constellayion")
         .form-group
+          label.col-md-2.control-label(for="movie_celebrity_birthday") 出生日期
+          .col-md-6
+            input#movie_celebrity_birthday.form-control(type="text" name="movie_celebrity_birthday")
+        .form-group
           label.col-md-2.control-label(for="movie_celebrity_born_place") 出生地
           .col-md-6
             input#movie_celebrity_born_place.form-control(type="text" name="movie_celebrity_born_place")
+        .form-group
+          label.col-md-2.control-label(for="movie_celebrity_professions") 职业
+          .col-md-6
+            input#movie_celebrity_professions.form-control(type="text" name="movie_celebrity_professions")
         .form-group
           label.col-md-2.control-label(for="movie_celebrity_aka") 更多中文名
           .col-md-6
@@ -53,5 +61,11 @@ block content
           .col-md-6
             input#movie_celebrity_avatar.form-control(type="text" name="movie_celebrity_avatar")
         .form-group
-          .col-md-offset-2.col-md-10
+          label.col-md-2.control-label(for="movie_celebrity_works") 作品
+          .col-md-6
+            input#movie_celebrity_works.form-control(type="text" name="movie_celebrity_works")
+        .form-group
+          .col-md-offset-2.col-md-5
             button.btn.btn-default(type="submit") 录入
+          .col-md-5
+            a.btn.btn-primary(href="/admin") 返回

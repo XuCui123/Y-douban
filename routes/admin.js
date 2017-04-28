@@ -5,14 +5,17 @@ var User = mongoose.model('User');
 var Movie = mongoose.model('Movie');
 var MovieCelebrity = mongoose.model('MovieCelebrity');
 var MovieCategory = mongoose.model('MovieCategory');
+var check = require('../middlewares/check');
+var checkLogin = check.checkLogin;
+var isAdmin = check.isAdmin;
 
 // GET /admin 管理页面
-router.get('/', (req, res, next) => {
+router.get('/', checkLogin, isAdmin, (req, res, next) => {
   res.render('admin', { title: '豆瓣后台管理' });
 });
 
 // GET /admin/userlist 用户列表
-router.get('/user/list', (req, res, next) => {
+router.get('/user/list', checkLogin, isAdmin, (req, res, next) => {
   var page = parseInt(req.query.p, 10) || 0;
   var count = 5;
   var index = page * count;
@@ -22,7 +25,7 @@ router.get('/user/list', (req, res, next) => {
 
     for (var i = 0; i < users.length; i++) {
       if (users[i].phone === 18888888888) {
-        users = users.splice(i+1);
+        users.splice(i, 1);
       }
     }
 
@@ -38,7 +41,7 @@ router.get('/user/list', (req, res, next) => {
 });
 
 // DELETE /admin/userlist 用户删除交换
-router.delete('/user/list', (req, res, next) => {
+router.delete('/user/list', checkLogin, isAdmin, (req, res, next) => {
   var id = req.query.id;
   if (id) {
     User.remove({_id: id}, (err, user) => {
@@ -53,40 +56,51 @@ router.delete('/user/list', (req, res, next) => {
 });
 
 // GET /admin/movie/create 豆瓣电影后台录入页
-router.get('/movie/create', (req, res, next) => {
+router.get('/movie/create', checkLogin, isAdmin, (req, res, next) => {
   res.render('admin_movie_create', { title: '豆瓣电影录入' });
 });
 
 // POST /admin/movie/crate 豆瓣电影后台提交
 router.post('/movie/create', (req, res, next) => {
-
-  var movie_name = req.fields.movie_name;
-  var movie_director = req.fields.movie_director;
-  var movie_screenwriter = req.fields.movie_screenwriter;
-  var movie_actor = req.fields.movie_actor;
-  var movie_categories = req.fields.movie_categories;
-  var movie_country = req.fields.movie_country;
-  var movie_language = req.fields.movie_language;
+  var movie_douban_id = req.fields.movie_douban_id;
+  var movie_title = req.fields.movie_title;
+  var movie_original_title = req.fields.movie_original_title;
   var movie_year = req.fields.movie_year;
-  var movie_duration = req.fields.movie_duration;
-  var movie_alias = req.fields.movie_alias;
-  var movie_post = req.fields.movie_post
+  var movie_directors = req.fields.movie_directors.split(',');
+  var movie_writers = req.fields.movie_writers.split(',');
+  var movie_casts = req.fields.movie_casts.split(',');
+  var movie_categories = req.fields.movie_categories.split(',');
+  var movie_countries = req.fields.movie_countries.split(',');
+  var movie_languages = req.fields.movie_languages.split(',');
+  var movie_pubdate = req.fields.movie_pubdate.split(',');
+  var movie_durations = req.fields.movie_durations.split(',');
+  var movie_aka = req.fields.movie_aka.split(',');
+  var movie_images = req.fields.movie_images.split(',');
+  var movie_summary = req.fields.movie_summary;
 
   var _movie = {
-    name: movie_name,
-    director: movie_director,
-    screenwriter: movie_screenwriter,
-    actor: movie_actor,
-    categories: movie_categories,
-    country: movie_country,
-    language: movie_language,
+    douban_id: movie_douban_id,
+    title: movie_title,
+    original_title: movie_original_title,
     year: movie_year,
-    duration: movie_duration,
-    alias: movie_alias,
-    post: movie_post
+    directors: movie_directors,
+    writers: movie_writers,
+    casts: movie_casts,
+    categories: movie_categories,
+    countries: movie_countries,
+    languages: movie_languages,
+    pubdate: movie_pubdate,
+    durations: movie_durations,
+    aka: movie_aka,
+    movie_images: {
+      small: movie_images[0],
+      large: movie_images[1],
+      medium: movie_images[2]
+    },
+    summay: movie_summary
   }
 
-  Movie.findOne({name: movie_name}, function (err, movie) {
+  Movie.findOne({title: movie_title}, function (err, movie) {
     if (err) console.log(err);
 
     if (movie !== null) {
@@ -94,8 +108,25 @@ router.post('/movie/create', (req, res, next) => {
       return res.redirect('/admin/movie/create');
     } else {
       movie = new Movie(_movie);
+
       movie.save(function (err, movie) {
         if (err) console.log(err);
+
+        movie_categories.forEach(function (item) {
+          MovieCategory.findOne({name: item}, function (err, category) {
+            if (category) {
+              category.movies.push(movie._id);
+            } else {
+              var movieCategory = new MovieCategory({
+                name: item,
+                movies: [movie._id]
+              });
+              movieCategory.save(function (err, category) {
+                if (err) console.log(err);
+              });
+            }
+          });
+        });
 
         res.redirect('/admin/movie/list');
       });
@@ -148,11 +179,14 @@ router.post('/celebrity/create', (req, res, next) => {
   var movie_celebrity_name_en = req.fields.movie_celebrity_name_en;
   var movie_celebrity_gender = req.fields.movie_celebrity_gender;
   var movie_celebrity_constellayion = req.fields.movie_celebrity_constellayion;
+  var movie_celebrity_birthday = req.fields.movie_celebrity_birthday;
   var movie_celebrity_born_place = req.fields.movie_celebrity_born_place;
-  var movie_celebrity_aka = req.fields.movie_celebrity_aka;
-  var movie_celebrity_aka_en = req.fields.movie_celebrity_aka_en;
+  var movie_celebrity_professions = req.fields.movie_celebrity_professions.split(',');
+  var movie_celebrity_aka = req.fields.movie_celebrity_aka.split(',');
+  var movie_celebrity_aka_en = req.fields.movie_celebrity_aka_en.split(',');
   var movie_celebrity_website = req.fields.movie_celebrity_website;
-  var movie_celebrity_avatar = req.fields.movie_celebrity_avatar;
+  var movie_celebrity_avatar = req.fields.movie_celebrity_avatar.split(',');
+  var movie_celebrity_works = req.fields.movie_celebrity_works;
 
   var _movieCelebrity = {
     douban_id: movie_celebrity_douban_id,
@@ -160,11 +194,18 @@ router.post('/celebrity/create', (req, res, next) => {
     name_en: movie_celebrity_name_en,
     gender: movie_celebrity_gender,
     constellayion: movie_celebrity_constellayion,
+    birthday: movie_celebrity_birthday,
     born_place: movie_celebrity_born_place,
+    professions: movie_celebrity_professions,
     aka: movie_celebrity_aka,
     aka_en: movie_celebrity_aka_en,
     website: movie_celebrity_website,
-    avatar: movie_celebrity_avatar
+    avatar: {
+      small: movie_celebrity_avatar[0],
+      large: movie_celebrity_avatar[1],
+      medium: movie_celebrity_avatar[2]
+    },
+    works: movie_celebrity_works
   }
 
   MovieCelebrity.findOne({douban_id: movie_celebrity_douban_id}, function (err, movieCelebrity) {

@@ -1,21 +1,29 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var ObjectId = Schema.Types.ObjectId;
 
 var MovieSchema = new Schema({
-  name: {
+  douban_id: {
+    uniqe: true,
+    type: String,
+  },
+  title: {
     uniqe: true,
     type: String
   },
-  director: String,
-  screenwriter: String,
-  actor: String,
-  categories: String,
-  country: String,
-  language: String,
+  original_title: String,
   year: String,
-  duration: String,
-  alias: String,
-  post: String,
+  directors: [String],
+  writers: [String],
+  casts: [String],
+  categories: [String],
+  countries: [String],
+  languages: [String],
+  pubdate: String,
+  durations: [String],
+  aka: [String],
+  images: Object,
+  summay: String,
   meta: {
     createAt: {
       type: Date,

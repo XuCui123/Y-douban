@@ -19,7 +19,7 @@ block content
               td #{movieCelebrity.name}
               td #{moment(movieCelebrity.meta.updateAt).format('YYYY-MM-DD, HH:mm:ss')}
               td
-                a(href="/celebrity/" + movieCelebrity._id, target="_blank") 查看
+                a(href="/celebrity/" + movieCelebrity.douban_id, target="_blank") 查看
               td
                 a(href="/admin/movieCelebrity/update/" + movieCelebrity._id, target="_blank") 修改
               td
@@ -46,3 +46,8 @@ block content
         - }else{
           a(href='/admin/celebrity/list?p=' + (currentPage)) &raquo;
         - } 
+    .back.row
+      .col-md-1
+        a.btn.btn-primary(href="/admin") 返回
+      .col-md-1
+        a.btn.btn-success(href="/admin/celebrity/create") 继续录入

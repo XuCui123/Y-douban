@@ -6,6 +6,7 @@ block content
       table.table.table-hover.table-bordered
         thead
           tr
+            th 豆瓣id
             th 电影名称
             th 修改时间
             th 查看
@@ -14,10 +15,11 @@ block content
         tbody
           each movie in movies
             tr(class="movie-id-" + movie._id)
-              td #{movie.name}
+              td #{movie.douban_id}
+              td #{movie.title}
               td #{moment(movie.meta.updateAt).format('YYYY-MM-DD, HH:mm:ss')}
               td
-                a(href="/movie/" + movie._id, target="_blank") 查看
+                a(href="/movie/" + movie.douban_id, target="_blank") 查看
               td
                 a(href="/admin/movie/update/" + movie._id, target="_blank") 修改
               td
@@ -44,3 +46,5 @@ block content
         - }else{
           a(href='/admin/movie/list?p=' + (currentPage)) &raquo;
         - } 
+    .back
+      a.btn.btn-primary(href="/admin") 返回

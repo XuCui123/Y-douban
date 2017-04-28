@@ -13,10 +13,10 @@ router.get('/:id', (req, res, next) => {
   var id = req.params.id;
 
   Movie
-    .findOne({_id: id})
+    .findOne({douban_id: id})
     .exec(function (err, movie) {
       res.render('movie_detail', {
-        title: movie.name + '(豆瓣)',
+        title: movie.title + '(豆瓣)',
         movie: movie
       });
     });
