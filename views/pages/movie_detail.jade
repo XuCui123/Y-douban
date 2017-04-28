@@ -7,10 +7,57 @@ block content
     .movie-content
       .ad
       h1
-        span #{movie.name}
+        span.title #{movie.title}
+        if movie.original_title
+          span #{movie.original_title}
         span.year (#{movie.year})
       .main.clearfix
-        .movie-desc
+        .movie-detail
+          .desc-wrapper.clearfix
+            .desc.clearfix
+              .pic
+                a(href="")
+                  img(src=movie.images.medium)
+              .info
+                .item
+                  span 导演：
+                  each director in movie.directors
+                    a.split(href="/celebrity/" + director.douban_id) #{director.name}
+                .item
+                  span 编剧：
+                  each writer in movie.writers
+                    a.split(href="/celebrity" + writer.douban_id) #{writer.name}
+                .item
+                  span 主演：
+                  each cast in movie.casts
+                    a.split(href="/celebrity" + cast.douban_id) #{cast.name}
+                .item
+                  span 类型：
+                  each category in movie.categories
+                    span.split #{category}
+                .item
+                  span 制片国家/地区：
+                  each country in movie.countries
+                    span.split #{country}
+                .item
+                  span 语言：
+                  each language in movie.languages
+                    span.split #{language}
+                .item
+                  span 上映日期：
+                  span #{movie.pubdate}
+                .item
+                  span 片长：
+                  each duration in movie.durations
+                    span.split #{duration}
+                .item
+                  span 又名：
+                  each name in movie.aka
+                    span.split #{name}
+                .item
+                  span IMDb链接：
+                  a(href="www.yujunren.com" target="_blank") yudaren007007 
+            .rating
         .aside
           .ticket
             a.ticket-btn(href="") 豆瓣购票 12元起

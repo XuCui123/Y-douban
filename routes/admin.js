@@ -72,32 +72,59 @@ router.post('/movie/create', (req, res, next) => {
   var movie_categories = req.fields.movie_categories.split(',');
   var movie_countries = req.fields.movie_countries.split(',');
   var movie_languages = req.fields.movie_languages.split(',');
-  var movie_pubdate = req.fields.movie_pubdate.split(',');
+  var movie_pubdate = req.fields.movie_pubdate;
   var movie_durations = req.fields.movie_durations.split(',');
   var movie_aka = req.fields.movie_aka.split(',');
   var movie_images = req.fields.movie_images.split(',');
   var movie_summary = req.fields.movie_summary;
+  var movie_rating = req.fields.movie_rating;
+
+  var directors = [];
+  var writers = [];
+  var casts = [];
+  movie_directors.forEach( function (item) {
+    var director = {
+      douban_id: item.split(':')[0],
+      name: item.split(':')[1]
+    }
+    directors.push(director);
+  });
+  movie_writers.forEach( function (item) {
+    var writer = {
+      douban_id: item.split(':')[0],
+      name: item.split(':')[1]
+    }
+    writers.push(writer);
+  });
+  movie_casts.forEach( function (item) {
+    var cast = {
+      douban_id: item.split(':')[0],
+      name: item.split(':')[1]
+    }
+    casts.push(cast);
+  });
 
   var _movie = {
     douban_id: movie_douban_id,
     title: movie_title,
     original_title: movie_original_title,
     year: movie_year,
-    directors: movie_directors,
-    writers: movie_writers,
-    casts: movie_casts,
+    directors: directors,
+    writers: writers,
+    casts: casts,
     categories: movie_categories,
     countries: movie_countries,
     languages: movie_languages,
     pubdate: movie_pubdate,
     durations: movie_durations,
     aka: movie_aka,
-    movie_images: {
+    images: {
       small: movie_images[0],
       large: movie_images[1],
       medium: movie_images[2]
     },
-    summay: movie_summary
+    summay: movie_summary,
+    rating: movie_rating
   }
 
   Movie.findOne({title: movie_title}, function (err, movie) {

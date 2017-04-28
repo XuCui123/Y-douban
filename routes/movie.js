@@ -14,7 +14,7 @@ router.get('/:id', (req, res, next) => {
 
   Movie
     .findOne({douban_id: id})
-    .exec(function (err, movie) {
+    .exec(function (err, movie) {      
       res.render('movie_detail', {
         title: movie.title + '(豆瓣)',
         movie: movie
